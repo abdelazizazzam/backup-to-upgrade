@@ -1,0 +1,35 @@
+<odoo>
+<!--    <record id="hr_allowance_category" model="ir.module.category">-->
+<!--        <field name="name">Allowance</field>-->
+<!--    </record>-->
+
+<!--    <record id="hr_allowance_user_group" model="res.groups">-->
+<!--        <field name="name">User</field>-->
+<!--        <field name="category_id" ref="odt_allowances.hr_allowance_category"/>-->
+<!--    </record>-->
+
+<!--    <record id="hr_allowance_admin_group" model="res.groups">-->
+<!--        <field name="name">Admin</field>-->
+<!--        <field name="category_id" ref="odt_allowances.hr_allowance_category"/>-->
+<!--        <field name="implied_ids" eval="[(4, ref('odt_allowances.hr_allowance_user_group'))]"/>-->
+<!--    </record>-->
+
+    <!-- Record Rule -->
+    <record id="hr_allowance_see_own_record" model="ir.rule">
+        <field name="name">Allowance : See Own Record</field>
+        <field name="model_id" ref="model_hr_allowance"/>
+        <field name="domain_force">[('employee_id.user_id','=',user.id)]</field>
+        <field name="domain_force">
+            ['|',('employee_id.user_id','=',user.id),('message_partner_ids', 'in',[user.partner_id.id])]
+        </field>
+        <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+    </record>
+
+    <record id="hr_allowance_see_all_records" model="ir.rule">
+        <field name="name">Allowance : See All Record</field>
+        <field name="model_id" ref="model_hr_allowance"/>
+        <field name="domain_force">[(1,'=', 1)]</field>
+        <field name="groups" eval="[(4,ref('hr.group_hr_manager'))]"/>
+    </record>
+
+</odoo>

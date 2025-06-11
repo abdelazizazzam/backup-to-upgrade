@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Salary Other Input -->
+    <record id="eos_amount_other_input" model="hr.payslip.input.type">
+        <field name="name">EOS Amount</field>
+        <field name="code">EOS</field>
+    </record>
+    <record id="eos_compensate_other_input" model="hr.payslip.input.type">
+        <field name="name">EOS Additional (Compensatory) Bonus</field>
+        <field name="code">EOS_COMPENSATE</field>
+    </record>
+    <record id="eos_leave_other_input" model="hr.payslip.input.type">
+        <field name="name">EOS Leaves Amount</field>
+        <field name="code">EOS_LEAVE</field>
+    </record>
+    <record id="eos_add_other_input" model="hr.payslip.input.type">
+        <field name="name">EOS Additional Value</field>
+        <field name="code">EOS_ADD</field>
+    </record>
+</odoo>

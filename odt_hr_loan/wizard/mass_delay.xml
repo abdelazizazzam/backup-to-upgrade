@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="mass_delay_loan_form_view" model="ir.ui.view">
+            <field name="name">Mass Delay</field>
+            <field name="model">mass.delay.loan</field>
+            <field name="arch" type="xml">
+                <form string="Print Payslip">
+                    <group>
+                        <field name="months_delay"/>
+                    </group>
+                    <group>
+                        <field name="loan_ids"/>
+                    </group>
+                    <footer>
+                        <button name="mass_delay" string="Delay" type="object" class="oe_highlight"/>
+                        or
+                        <button special="cancel" string="Cancel" type="object" class="oe_link"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="mass_delay_loan" model="ir.actions.act_window">
+            <field name="name">Mass Delay</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">mass.delay.loan</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+        </record>
+
+        <menuitem id="menu_mass_delay_loan" parent="menu_hr_loan_root"
+                  action="mass_delay_loan" name="Mass Delay"/>
+    </data>
+</odoo>

@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_clearance_form_view" model="ir.ui.view">
+            <field name="name">hr.clearance.form</field>
+            <field name="model">hr.clearance</field>
+            <field name="arch" type="xml">
+                <form string="Employee Clearance">
+                    <header>
+                        <button class="oe_highlight" groups="base.group_user" invisible="state not in ['draft']" name="confirm_state" string="Confirm" type="object"/>
+                        <button class="oe_highlight" groups="base.group_user" invisible="state != 'confirm'" name="approve_state" string="Done" type="object"/>
+                        <button groups="base.group_user" invisible="state not in ['done']" name="cancel_state" string="Cancel" type="object"/>
+                        <button groups="base.group_user" invisible="state not in ['refuse']" name="draft_state" string="Set to Draft" type="object"/>
+                        <field name="state" statusbar_colors='{"draft":"blue","cancel":"red","confirm":"green"}' statusbar_visible="draft,done" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <!--                        <div class="oe_button_box oe_right">-->
+                        <!--                            <button name="print_clearance_form" string="Print Form" type="object"/>-->
+                        <!--                        </div>-->
+                        <group string="Employee Information">
+                            <group>
+                                <field name="employee_id" placeholder="Select Employee..."/>
+                                <field name="department_id" readonly="1"/>
+                                <field name="leave_reason"/>
+                                <field name="job_id" readonly="1"/>
+                                <field name="section"/>
+                            </group>
+                            <group>
+                                <field name="email"/>
+                                <field name="contact_phone"/>
+                                <field name="clearance_date"/>
+                                <field name="identification_id"/>
+                                <field name="grade"/>
+                            </group>
+                        </group>
+                        <group col="4" string="Employee’s Department">
+                            <field colspan="2" name="depart_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="Support Services Department">
+                            <field colspan="2" name="support_service_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="Gov. &amp; Public Relations Department">
+                            <field colspan="2" name="gov_public_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="Operation and Marketing &amp; Sales Department">
+                            <field colspan="2" name="opmarket_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="IT Department">
+                            <field colspan="2" name="it_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="Finance Department">
+                            <field colspan="2" name="finance_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="HR Department">
+                            <field colspan="2" name="hr_asset" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="name"/>
+                                    <field name="asset_answer"/>
+                                    <field name="reviewed_by"/>
+                                    <field name="notes"/>
+                                </tree></field>
+                        </group>
+                        <group col="4" string="Employee Custody">
+                            <field colspan="2" name="custody_ids" nolabel="1" readonly="state in 'done'">
+                                <tree editable="bottom">
+                                    <field name="type_custody"/>
+                                    <field name="asset_id"/>
+                                    <field name="product_id"/>
+                                    <field name="state_custody"/>
+                                </tree></field>
+                        </group>
+                    </sheet>
+                    <div class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form></field>
+        </record>
+        <record id="hr_clearance_tree_view" model="ir.ui.view">
+            <field name="name">hr.clearance.tree</field>
+            <field name="model">hr.clearance</field>
+            <field name="arch" type="xml">
+                <tree string="Employee Clearance">
+                    <field name="employee_id"/>
+                    <field name="department_id"/>
+                    <field name="clearance_date"/>
+                </tree></field>
+        </record>
+        <record id="action_clearance_menu" model="ir.actions.act_window">
+            <field name="name">Employee Clearance</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.clearance</field>
+            <field name="view_mode">tree,form</field>
+            <!--<field name="search_view_id" ref="hr_clearance_search_view"/>-->
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    Add Employee Clearance Details.
+                </p></field>
+        </record>
+        <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+        <menuitem id="menu_hr_clearance_root" name="Clearance" sequence="46"/>
+        <menuitem action="action_clearance_menu" id="hr_menu_hr_clearance" parent="menu_hr_clearance_root" sequence="1"/>
+    </data>
+</odoo>

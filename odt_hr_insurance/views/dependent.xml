@@ -1,0 +1,85 @@
+<odoo>
+
+    <!--    dependent form-->
+    <record id="view_dependent_form" model="ir.ui.view">
+        <field name="name">view.dependent.form</field>
+        <field name="model">dependent</field>
+        <field name="arch" type="xml">
+            <form string="Dependent">
+                <sheet>
+                    <group col="4">
+                        <field name="arabic_name" class="mb-4"/>
+                        <field name="english_name" class="mb-4"/>
+                        <field name="id_number" class="mb-4"/>
+                        <field name="relative_relation" class="mb-4"/>
+                        <field name="date_of_birth" class="mb-4"/>
+                        <field name="gender" class="mb-4"/>
+                        <field name="addition_date" class="mb-4"/>
+                        <field name="phone_number" class="mb-4"/>
+<!--                        <field name="attachment"/>-->
+                        <field name="attachment_link"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!--    dependent tree-->
+    <record id="view_dependent_tree" model="ir.ui.view">
+        <field name="name">view.dependent.tree</field>
+        <field name="model">dependent</field>
+        <field name="priority">5</field>
+        <field name="arch" type="xml">
+            <tree string="Dependent">
+                <field name="arabic_name"/>
+                <field name="english_name"/>
+                <field name="related_employee_id"/>
+                <field name="id_number"/>
+                <field name="relative_relation"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+                <field name="addition_date"/>
+                <field name="phone_number"/>
+            </tree>
+        </field>
+    </record>
+    <record id="view_dependent_tree_second" model="ir.ui.view">
+        <field name="name">view.dependent.tree</field>
+        <field name="model">dependent</field>
+        <field name="priority">15</field>
+        <field name="arch" type="xml">
+            <tree string="Dependent" create="false">
+                <field name="arabic_name"/>
+                <field name="english_name"/>
+                <field name="related_employee_id"/>
+                <field name="id_number"/>
+                <field name="relative_relation"/>
+                <field name="date_of_birth"/>
+                <field name="gender"/>
+                <field name="addition_date"/>
+                <field name="phone_number"/>
+            </tree>
+        </field>
+    </record>
+
+    <!--    dependent action-->
+    <record id="action_dependent_view" model="ir.actions.act_window">
+        <field name="name">Dependent</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">dependent</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_dependent_tree_second"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create new dependent !
+            </p>
+        </field>
+    </record>
+
+    <!--    dependent menu-->
+    <menuitem id="menu_dependent_view"
+              name="Dependent"
+              parent="odt_hr_insurance.menu_insurance_categ_menu_root"
+              action="action_dependent_view"
+              sequence="99"/>
+</odoo>

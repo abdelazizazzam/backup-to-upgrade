@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <record id="work_entry_type_leave_advance" model="hr.work.entry.type">
+            <field name="name">Leave Advance</field>
+            <field name="color">0</field>
+            <field name="code">LEAVE_ADVANCE</field>
+        </record>
+
+    </data>
+</odoo>

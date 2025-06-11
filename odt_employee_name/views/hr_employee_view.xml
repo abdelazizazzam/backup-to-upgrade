@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="edit_1view_employee_form" model="ir.ui.view">
+            <field name="name">hr.employee.form</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//div[@class='oe_title mw-75 ps-0 pe-2']" position="replace">
+                    <div class="oe_title">
+                    
+                        <label for="employee_id" class="oe_edit_only"/>
+                        <h3>
+                            <field name="employee_id" style="width: 10em" required="0"/>
+                        </h3>
+                        <label for="name" class="oe_edit_only"/>
+                        <h2>
+                            <field name="name" readonly="1" force_save="1"/>
+                            
+                        </h2>
+                        <h3>
+                            <field name="first_name" placeholder="First Name" class="oe_inline oe_edit_only"  required="1"/>
+                            <field name="second_name" placeholder="Father Name" class="oe_inline oe_edit_only"/>
+                        </h3>
+                        <h3>
+                            <field name="third_name" placeholder="Grandfather Name" class=" oe_inline oe_edit_only"/>
+                            <field name="last_name" placeholder="Last Name" class="oe_inline oe_edit_only"/>
+                        </h3>
+                        <h3>
+                            <field name="category_ids" widget="many2many_tags" options="{'color_field': 'color', 'no_create_edit': True}" placeholder="Tags" groups="hr.group_hr_manager"/>
+                        </h3>
+<!--                        <label for="category_ids" class="oe_edit_only" groups="base.group_hr_user"/>-->
+<!--                        <field name="category_ids" widget="many2many_tags" placeholder="e.g. Part Time"-->
+<!--                               groups="base.group_hr_user"/>-->
+<!--                        <label for="work_email" class="oe_edit_only"/>-->
+<!--                        <field name="work_email" widget="email"/>-->
+<!--                        <label for="work_phone" class="oe_edit_only"/>-->
+<!--                        <field name="work_phone"/>-->
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='country_id']" position="attributes">
+                    <attribute name="required">1</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr_view_employee_tree" model="ir.ui.view">
+            <field name="name">hr.employee.tree</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='work_phone']" position="before">
+                    <field name="employee_id"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="hr.open_view_employee_list_my" model="ir.actions.act_window">
+            <field name="context">{'readonly_by_pass': True}</field>
+        </record>
+
+        <record id="odoo_hr_employee_view_form_id_edit" model="ir.ui.view">
+            <field name="name">hr.employee.form.id.edit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+<!--            <field name="groups_id" eval="[(6, 0, [ref('base.group_user')])]" />-->
+            <field name="arch" type="xml">
+                <field name="employee_id" position="attributes">
+                   <attribute name="readonly">1</attribute>
+                </field>
+            </field>
+        </record>
+
+        <record id="odoo_hr_employee_view_form_id_noedit" model="ir.ui.view">
+            <field name="name">hr.employee.form.id.noedit</field>
+            <field name="model">hr.employee</field>
+            <field name="inherit_id" ref="hr.view_employee_form" />
+<!--            <field name="groups_id" eval="[(6, 0, [ref('hr.group_hr_manager')])]" />-->
+            <field name="arch" type="xml">
+                <field name="employee_id" position="attributes">
+                   <attribute name="readonly">0</attribute>
+                </field>
+            </field>
+        </record>
+    </data>
+</odoo>

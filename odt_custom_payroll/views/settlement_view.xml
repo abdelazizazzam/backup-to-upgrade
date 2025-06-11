@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_settlement_action" model="ir.actions.act_window">
+        <field name="name">Settlements</field>
+        <field name="res_model">hr.settlement</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem action="hr_settlement_action" id="hr_settlement_menu" name="Settlements" parent="hr_payroll.menu_hr_payroll_payslips"/>
+    <record id="hr_settlement_view_form" model="ir.ui.view">
+        <field name="name">hr_settlement.view.form</field>
+        <field name="model">hr.settlement</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <button class="oe_highlight" groups="base.group_user" invisible="state not in ['approve1','approve2']" name="action_set_draft" string="Set To Draft" type="object"/>
+                    <button class="oe_highlight" groups="odt_custom_payroll.settlement_first_approve_group" invisible="state not in ['draft']" name="compute_attendance" string="Compute Late Attendance" type="object"/>
+                    <button class="oe_highlight" groups="odt_custom_payroll.settlement_first_approve_group" invisible="state not in ['draft']" name="action_approve1" string="First Apporval" type="object"/>
+                    <button class="oe_highlight" groups="odt_custom_payroll.settlement_second_approve_group" invisible="state not in ['approve1']" name="action_approve2" string="Second Approval" type="object"/>
+                    <field name="state" statusbar_visible="draft,approve1,approve2" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="date_from" readonly="state == 'approve2'"/>
+                        <field name="date_to" readonly="state == 'approve2'"/>
+                        <!--                        <field name="transaction_date" attrs="{'readonly': [('state', '=', 'approve2')]}"/>-->
+                        <field name="type_id" readonly="state == 'approve2'"/>
+                    </group>
+                    <group>
+                        <field name="settlement_line_ids" readonly="state == 'approve2'" widget="section_and_note_one2many">
+                            <tree editable="bottom">
+                                <field name="employee_id"/>
+                                <field name="date"/>
+                                <field name="amount"/>
+                                <field name="leave_id" readonly="1"/>
+                                <field name="is_paid" readonly="1"/>
+                            </tree></field>
+                    </group>
+                </sheet>
+            </form></field>
+    </record>
+    <record id="hr_settlement_view_tree" model="ir.ui.view">
+        <field name="name">hr_settlement.view.tree</field>
+        <field name="model">hr.settlement</field>
+        <field name="arch" type="xml">
+            <tree string="">
+                <field name="date_from"/>
+                <field name="date_to"/>
+                <field name="state"/>
+                <field name="type_id"/>
+            </tree></field>
+    </record>
+    <record id="odt_custom_payslip_form_inherit" model="ir.ui.view">
+        <field name="name">odt_leave_termination_payslip.form</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='state']" position="attributes">
+                <attribute name="statusbar_visible">
+                    draft,confirmed,done,paid</attribute>
+            </xpath>
+            <xpath expr="//button[@name='action_payslip_paid']" position="after">
+                <button class="oe_highlight" groups="odt_custom_payroll.can_confirm_payslip_group" invisible="state not in ['verify']" name="action_payslip_confirm" string="Confirm Payslip" type="object"/>
+            </xpath></field>
+    </record>
+    <record id="odt_custom_payslip_form_inherit_edit" model="ir.ui.view">
+        <field name="name">odt_leave_termination_payslip.form</field>
+        <field name="model">hr.payslip</field>
+        <field name="inherit_id" ref="hr_payroll_account.hr_payslip_view_form"/>
+        <field eval="8" name="priority"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button" position="replace">
+                <button class="oe_highlight" confirm="Are you sure you want to proceed ?" context="{'payslip_generate_pdf': True}" invisible="state not in 'confirmed'" name="action_payslip_done" string="Create Draft Entry" type="object"/>
+            </xpath></field>
+    </record>
+</odoo>

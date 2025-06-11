@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_asset_expense_custody_form" model="ir.ui.view">
+            <field name="name">hr.asset.expense.custody.form</field>
+            <field name="model">hr.custody</field>
+            <field name="arch" type="xml">
+                <form string="Custody">
+                    <header>
+                        <!--                        <button name="action_confirm" string="Confirm" class="oe_highlight" states="draft"-->
+                        <!--                                type="object"/>-->
+                        <field name="state" statusbar_visible="draft,manager_approve,section_approve,confirm" widget="statusbar"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <field name="employee_id" readonly="state == 'confirm'"/>
+                            <field invisible="1" name="invoice_id"/>
+                        </group>
+                        <notebook>
+                            <page string="Custody">
+                                <field name="custody_line"><tree editable="bottom">
+                                        <field invisible="1" name="custody_id"/>
+                                        <field name="type_custody"/>
+                                        <field name="name" readonly="type_custody != 'other'" string="Other Type"/>
+                                        <field name="asset_id" readonly="type_custody != 'asset'"/>
+                                        <field name="product_id" readonly="type_custody != 'expense'"/>
+                                        <field name="state_custody"/>
+                                        <field name="date_from"/>
+                                        <field name="date_to"/>
+                                    </tree></field>
+                            </page>
+                            <page string="Transfer">
+                                <group>
+                                    <group>
+                                        <field domain="[('id','in',custody_line),('state_custody','=','deliver')]" name="custody_transfer" options="{'no_create':true}" widget="many2many_tags"/>
+                                        <button class="oe_highlight" name="action_transfer" string="Transfer" type="object"/>
+                                    </group>
+                                    <group>
+                                        <field name="employee_transfer"/>
+                                        <field name="date_transfer"/>
+                                    </group>
+                                </group>
+                            </page>
+                            <page string="Reserve">
+                                <group>
+                                    <group>
+                                        <field domain="[('id','in',custody_line),('state_custody','=','deliver')]" name="custody_reserve" options="{'no_create':true}" widget="many2many_tags"/>
+                                        <button class="oe_highlight" name="action_reserve" string="Reserve" type="object"/>
+                                    </group>
+                                    <group>
+                                        <field name="date_reserve"/>
+                                    </group>
+                                </group>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form></field>
+        </record>
+        <record id="hr_asset_expense_custody_tree" model="ir.ui.view">
+            <field name="name">hr.asset.expense.custody.tree</field>
+            <field name="model">hr.custody</field>
+            <field name="arch" type="xml">
+                <tree string="custody">
+                    <field name="employee_id"/>
+                </tree></field>
+        </record>
+        <record id="action_hr_asset_expense_custody_view" model="ir.actions.act_window">
+            <field name="name">Custody</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">hr.custody</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p></field>
+        </record>
+        <record id="hr_asset_expense_custody_invoice_form" model="ir.ui.view">
+            <field name="name">hr.asset.expense.custody.form</field>
+            <field name="model">hr.custody.line</field>
+            <field name="arch" type="xml">
+                <form string="custody line">
+                    <sheet>
+                        <group col="4">
+                            <field invisible="1" name="custody_id"/>
+                            <field name="name"/>
+                            <field name="employee_id"/>
+                            <field name="type_custody"/>
+                            <field name="date_from"/>
+                            <field name="date_to"/>
+                            <field invisible="type_custody not in ['asset']" name="asset_id"/>
+                            <field invisible="type_custody not in ['asset']" name="model"/>
+                            <field invisible="type_custody not in ['asset']" name="description"/>
+                            <field invisible="type_custody not in ['expense']" name="product_id"/>
+                            <field name="notes"/>
+                            <field invisible="context.get('is_not_visible')" name="state_custody"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button class="btn-primary" invisible="context.get('is_not_visible')" name="create_custody" string="Assign" type="object"/>
+                        <button class="btn-default" invisible="context.get('is_not_visible')" special="cancel" string="Cancel"/>
+                    </footer>
+                </form></field>
+        </record>
+        <record id="hr_asset_expense_custody_tree_line" model="ir.ui.view">
+            <field name="name">hr.asset.expense.custody.line.form</field>
+            <field name="model">hr.custody.line</field>
+            <field name="arch" type="xml">
+                <tree string="Custody Line">
+                    <field invisible="1" name="custody_id"/>
+                    <field name="name"/>
+                    <field name="asset_id"/>
+                    <field name="model"/>
+                    <field name="notes"/>
+                    <field name="product_id"/>
+                    <field name="type_custody"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="state_custody"/>
+                </tree></field>
+        </record>
+        <!--Actions Lines-->
+        <record id="action_hr_custody_line_view" model="ir.actions.act_window">
+            <field name="name">Reserved Custody</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="context">{'is_not_visible': True}</field>
+            <field name="domain">[('state_custody','=','reserve')]</field>
+            <field name="res_model">hr.custody.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_asset_expense_custody_tree_line"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p></field>
+        </record>
+        <record id="action_custody_form_line" model="ir.actions.act_window">
+            <field name="name">Custody Lines</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="context">{'is_not_visible': True}</field>
+            <field name="res_model">hr.custody.line</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="hr_asset_expense_custody_tree_line"/>
+            <field name="help" type="html">
+                <p class="oe_view_nocontent_create">
+                    <!-- Add Text Here -->
+                </p>
+                <p>
+                    <!-- More details about what a user can do with this object will be OK -->
+                </p></field>
+        </record>
+        <record id="action_asset_expense_custody" model="ir.actions.act_window">
+            <field name="name">Assign Asset</field>
+            <field name="res_model">hr.custody.line</field>
+            <field name="view_mode">form</field>
+            <field name="context">{'default_invoice_id':active_id}</field>
+            <field name="target">new</field>
+        </record>
+        <!-- This Menu Item must have a parent and an action -->
+        <menuitem id="root_menu_hr_custody_clearance" name="Custody" sequence="46"/>
+        <menuitem id="main_menu_hr_asset_expense" name="Employee Custody" parent="root_menu_hr_custody_clearance" sequence="4"/>
+        <menuitem id="main_menu_hr_custody_clearance_reports" name="Reports" parent="root_menu_hr_custody_clearance" sequence="10"/>
+        <menuitem action="action_hr_asset_expense_custody_view" id="menu_hr_asset_expense" name="Employee Custody" parent="main_menu_hr_asset_expense" sequence="1"/>
+        <menuitem action="action_custody_form_line" id="menu_hr_asset_expense_custody" name="Custody Lines" parent="main_menu_hr_asset_expense" sequence="2"/>
+        <menuitem action="action_hr_custody_line_view" id="menu_hr_asset_expense_reserved" name="Reserved Custody" parent="main_menu_hr_asset_expense" sequence="3"/>
+    </data>
+</odoo>

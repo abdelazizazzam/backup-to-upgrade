@@ -1,0 +1,1496 @@
+<odoo>
+
+    <template id="web_form_crm" name="طلب علاج">
+        <t t-call="website.layout">
+            <t t-set="pageName" t-value="'MultiStepsWebForm'"/>
+            <div id="wrap" class="oe_structure oe_empty">
+                <section class="s_title pt40  o_colored_level" data-vcss="001" data-snippet="s_title" data-name="Title"
+                         style="background-image: none;">
+                    <div class="s_allow_columns o_container_small">
+                        <h3 style="text-align: center;">طلب علاج</h3>
+                    </div>
+                </section>
+                <section class="s_text_block pt40 pb80 o_colored_level" data-snippet="s_text_block" data-name="Text"
+                         style="background-image: none;">
+                    <div class="container s_allow_columns">
+                        <h4 style="text-align: right;">أكمل جميع البيانات المطلوبة بالأسفل ثم اضغط إرسال&amp;nbsp;</h4>
+                    </div>
+                </section>
+                <section
+                        class="s_process_steps pt40 pb24 o_colored_level s_process_steps_connector_line o_full_screen_height"
+                        data-vcss="001" data-snippet="s_process_steps" data-name="Steps"
+                        style="background-image: none;margin-top:-150px">
+                    <svg class="s_process_step_svg_defs position-absolute">
+                        <defs>
+                            <marker class="s_process_steps_arrow_head" markerwidth="15" markerheight="10" refx="6"
+                                    refy="6" orient="auto" id="s_process_steps_arrow_head1734264199547">
+                                <path d="M 2,2 L10,6 L2,10 L6,6 L2,2" vector-effect="non-scaling-size"
+                                      style="fill: rgb(17, 24, 39);"/>
+                            </marker>
+                        </defs>
+                    </svg>
+                    <div class="container-fluid">
+                        <div class="row g-0">
+                            <div class="s_process_step pt24 pb24 o_colored_level col-lg-2 offset-lg-1">
+                                <svg class="s_process_step_connector" viewbox="0 0 173.5 80" preserveaspectratio="none"
+                                     style="left: calc(50% + 40px); height: 80px; width: calc(100% - 80px);">
+                                    <path d="M 0 40 L 173.5 40" vector-effect="non-scaling-stroke" marker-end=""
+                                          style="stroke: rgb(17, 24, 39);"/>
+                                </svg>
+                                <div class="s_process_step_icon">
+                                    <img src="/odt_crm_data/static/img/number-5.png" alt=""
+                                         class="mx-auto rounded-circle img img-fluid o_we_custom_image"
+                                         data-mimetype="image/webp" data-original-id="349"
+                                         data-original-src="/web/image/349-6863f173/number-1.png"
+                                         data-mimetype-before-conversion="image/png" data-resize-width="512"
+                                         loading="lazy"/>
+
+                                </div>
+                                <div class="s_process_step_content">
+                                    <h5 class="o_default_snippet_text">الحالة الصحية</h5>
+                                    <!--                                    <p class="o_default_snippet_text">Let your customers follow<br/>and understand your-->
+                                    <!--                                        process.-->
+                                    <!--                                    </p>-->
+                                </div>
+                            </div>
+                            <div class="s_process_step pt24 pb24 o_colored_level col-lg-2">
+                                <svg class="s_process_step_connector" viewbox="0 0 173.5 80" preserveaspectratio="none"
+                                     style="left: calc(50% + 40px); height: 80px; width: calc(100% - 80px);">
+                                    <path d="M 0 40 L 173.5 40" vector-effect="non-scaling-stroke" marker-end=""
+                                          style="stroke: rgb(17, 24, 39);"/>
+                                </svg>
+                                <div class="s_process_step_icon">
+                                    <img src="/odt_crm_data/static/img/number-4.png" alt=""
+                                         class="mx-auto rounded-circle img img-fluid o_we_custom_image"
+                                         data-mimetype="image/webp" data-original-id="344"
+                                         data-original-src="/web/image/344-74cb4a0a/number-2.png"
+                                         data-mimetype-before-conversion="image/png" data-resize-width="512"
+                                         loading="lazy"/>
+                                </div>
+                                <div class="s_process_step_content">
+                                    <h5 class="o_default_snippet_text">الوضع الاقتصادي</h5>
+                                    <!--                                    <p class="o_default_snippet_text">Click on the icon to adapt it<br/>to your purpose.-->
+                                    <!--                                    </p>-->
+                                </div>
+                            </div>
+                            <div class="s_process_step pt24 pb24 o_colored_level col-lg-2">
+                                <svg class="s_process_step_connector" viewbox="0 0 173.5 80" preserveaspectratio="none"
+                                     style="left: calc(50% + 40px); height: 80px; width: calc(100% - 80px);">
+                                    <path d="M 0 40 L 173.5 40" vector-effect="non-scaling-stroke" marker-end=""
+                                          style="stroke: rgb(17, 24, 39);"/>
+                                </svg>
+                                <div class="s_process_step_icon">
+                                    <img src="/odt_crm_data/static/img/number-3.png" alt=""
+                                         class="mx-auto rounded-circle img img-fluid o_we_custom_image"
+                                         data-mimetype="image/webp" data-original-id="343"
+                                         data-original-src="/web/image/343-9eee4d70/number-3.png"
+                                         data-mimetype-before-conversion="image/png" data-resize-width="512"
+                                         loading="lazy"/>
+                                </div>
+                                <div class="s_process_step_content">
+                                    <h5 class="o_default_snippet_text">الوضع السكني</h5>
+                                    <!--                                    <p class="o_default_snippet_text">Duplicate blocks<br/>to add more steps.-->
+                                    <!--                                    </p>-->
+                                </div>
+                            </div>
+                            <div class="s_process_step pt24 pb24 o_colored_level col-lg-2">
+                                <svg class="s_process_step_connector" viewbox="0 0 173.5 80" preserveaspectratio="none"
+                                     style="left: calc(50% + 40px); height: 80px; width: calc(100% - 80px);">
+                                    <path d="M 0 40 L 173.5 40" vector-effect="non-scaling-stroke" marker-end=""
+                                          style="stroke: rgb(17, 24, 39);"/>
+                                </svg>
+                                <div class="s_process_step_icon">
+                                    <img src="/odt_crm_data/static/img/number-2.png" alt=""
+                                         class="mx-auto rounded-circle img img-fluid o_we_custom_image"
+                                         data-mimetype="image/webp" data-original-id="342"
+                                         data-original-src="/web/image/342-7fafa1f5/number-4.png"
+                                         data-mimetype-before-conversion="image/png" data-resize-width="512"
+                                         loading="lazy"/>
+                                </div>
+                                <div class="s_process_step_content">
+                                    <h5 class="o_default_snippet_text">الوضع الاجتماعي</h5>
+
+                                </div>
+                            </div>
+                            <div class="s_process_step pt24 pb24 o_colored_level col-lg-2">
+                                <svg class="s_process_step_connector" viewbox="0 0 100 20" preserveaspectratio="none">
+                                    <path d="M 0 10 L 100 10" vector-effect="non-scaling-stroke" marker-end=""
+                                          style="stroke: rgb(17, 24, 39);"/>
+                                </svg>
+                                <div class="s_process_step_icon">
+                                    <img src="/odt_crm_data/static/img/number-1.png" alt=""
+                                         class="mx-auto rounded-circle img img-fluid o_we_custom_image"
+                                         data-mimetype="image/webp" data-original-id="341"
+                                         data-original-src="/web/image/341-75482902/number-5.png"
+                                         data-mimetype-before-conversion="image/png" data-resize-width="512"
+                                         loading="lazy"/>
+                                </div>
+                                <div class="s_process_step_content">
+                                    <h5 class="o_default_snippet_text">البيانات الأولية</h5>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <section dir="rtl">
+                        <div class="container">
+
+                            <form action="/test" id="web_form" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                <div class="s_website_form_rows row s_col_no_bgcolor">
+                                    <div id="number1" class="s_website_form_rows row s_col_no_bgcolor">
+                                        <h3 class="o_default_snippet_text">البيانات الأولية</h3>
+                                        <div class="row">
+                                            <div class=" s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            اسمك الرباعي:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input class="form-control s_website_form_input" type="text"
+                                                               name="name" required="1"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <div class="col-form-label col-sm-auto s_website_form_label"
+                                                         style="width: 200px">
+                                                        <select class="form-control" name="residency_type"
+                                                                id="residency_type">
+                                                            <option value="citizen">مواطن</option>
+                                                            <option value="resident">مقيم</option>
+                                                            <option value="visitor">زائر</option>
+                                                            <option value="other">أخرى</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-sm">
+                                                        <input class="form-control s_website_form_input" type="text"
+                                                               name="national_id" id="national_id"/>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_model_required"
+                                                 data-type="email">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الجنسية
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="col-sm">
+                                                        <select class="form-control" id="nationality" required="1"
+                                                                name="nationality">
+                                                            <option value=""/>
+                                                            <t t-foreach="countries" t-as="country">
+                                                                <option t-att-value="country['id']">
+                                                                    <t t-esc="country['name']"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                        </span>
+                                                    </label>
+
+                                                    <div class="col-sm" id="other_nationality_container"
+                                                         style="display: none;">
+                                                        <input type="text" class="form-control" id="other_nationality"
+                                                               name="other_nationality"
+                                                               placeholder="أدخل جنسيتك" required="1"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            البريد الإلكتروني:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="email" name="email"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_model_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            العمر:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input class="form-control s_website_form_input" type="Integer"
+                                                               name="age" required=""/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            تاريخ الميلاد:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="date" class="form-control s_website_form_input"
+                                                               name="date" required="1"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            رقم الجوال:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input class="form-control s_website_form_input" type="tel"
+                                                               required="1" name="mobile" data-fill-with="phone"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الجنس:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="gender" id="gender" required="1"
+                                                                class="form-control">
+                                                            <option value="male">ذكر</option>
+                                                            <option value="female">أنثى</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            المهنة:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="profession" id="profession" required="1"
+                                                                class="form-control">
+                                                            <option value="child">طفل</option>
+                                                            <option value="employee">موظف</option>
+                                                            <option value="other">أخرى</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مسمى الوظيفة:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input class="form-control s_website_form_input" type="text"
+                                                               name="job_title"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            المستوى التعليمي:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="education_level" id="education_level" required="1"
+                                                                class="form-control">
+                                                            <option value="illiterate">امي</option>
+                                                            <option value="read_write">يقراء و يكتب</option>
+                                                            <option value="primary">ابتدائي</option>
+                                                            <option value="secondary">تانوي</option>
+                                                            <option value="university">جامعي</option>
+                                                            <option value="other">أخرى</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            اسم شخص آخر يمكن الأتصال به :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="contact_name" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="row">
+
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            رقم جواله:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input class="form-control s_website_form_input" type="tel"
+                                                               required="1" name="contact_mobile"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            صلة القرابة:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="relation" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div style="display:none" class="s_website_form_rows row s_col_no_bgcolor"
+                                         id="number2">
+                                        <h3 class="o_default_snippet_text">الوضع الاجتماعي</h3>
+                                        <br/>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الحالة الإجتماعية :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="marital" id="marital" required="1"
+                                                                class="form-control">
+                                                            <option value="child">طفل</option>
+                                                            <option value="married">متزوج</option>
+                                                            <option value="divorced">مطلق</option>
+                                                            <option value="single">اعزب</option>
+                                                            <option value="widowed">ارمل</option>
+                                                            <option value="other">اخري</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد افراد الأسرة:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="family_member" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد الأفراد العاملين :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="working_member" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد الطلاب:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="students_number"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            المعيل الأساسي :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="primary_provider" id="primary_provider"
+                                                                required="1" class="form-control">
+                                                            <option value="self">مقدم الطلب نفسه</option>
+                                                            <option value="other">غيره</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            اسم المعيل:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="provider_name"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <br/>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-12 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            صلة القرابة:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="provider_relation"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div style="display:none" class="s_website_form_rows row s_col_no_bgcolor"
+                                         id="number3">
+                                        <h3 class="o_default_snippet_text">الوضع السكني</h3>
+                                        <br/>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            منطقة السكن :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="residence_area" id="residence_area" required="1"
+                                                                class="form-control">
+                                                            <option value="central">الوسطى</option>
+                                                            <option value="north">الشمالية</option>
+                                                            <option value="south">الجنوبية</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مدينة السكن:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="residence_city" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الحي:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="residence_district" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            نوع السكن :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="residence_type" id="residence_type" required="1"
+                                                                class="form-control">
+                                                            <option value="villa">فيلا</option>
+                                                            <option value="apartment">شقة</option>
+                                                            <option value="other">أخرى</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            ملكية السكن:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="residence_ownership" id="residence_ownership"
+                                                                required="1" class="form-control">
+                                                            <option value="owned">ملك</option>
+                                                            <option value="rented">إيجار</option>
+                                                            <option value="other">أخرى</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الإيجار السنوي إن وجد:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="annual_rent"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عقد الإيجار السنوي:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="annual_rent_doc" name="annual_rent_doc"
+                                                               title="عقد الإيجار السنوي"
+                                                               accept="image/*,application/pdf" type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div style="display:none;" class="s_website_form_rows row s_col_no_bgcolor"
+                                         id="number4">
+                                        <h3 class="o_default_snippet_text">الوضع الاقتصادي</h3>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مصدر الدخل :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="income_source" id="income_source" required="1"
+                                                                class="form-control">
+                                                            <option value="salary">راتب شهري</option>
+                                                            <option value="social">ضمان اجتماعي</option>
+                                                            <option value="bouns">مكافأة جامعية</option>
+                                                            <option value="help">اعانه خيرية</option>
+                                                            <option value="account">حساب مواطن</option>
+                                                            <option value="free">اعمال تجاريه او حره</option>
+                                                            <option value="other">أخرى</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-4 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الدخل الشهري لك أو لمن يعولك:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="monthly_income" required="1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            اثبات الدخل الشهرى:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="income_doc" name="income_doc" required="1"
+                                                               title="اثبات الدخل الشهرى"
+                                                               accept="image/*,application/pdf" type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!--                                            loan 1-->
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الغرض من القرض ١:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="loan_purpose_1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ القرض الكلي ١:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_amount_1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ السداد الشهري ١:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_monthly_payment_1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد الدفعات المتبقية ١:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_remaining_payments_1"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مرفق ١:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="loan_attachment_1" name="loan_attachment_1"
+                                                               title="مرفق ١" accept="image/*,application/pdf"
+                                                               type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                             loan 2-->
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الغرض من القرض ٢:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="loan_purpose_2"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ القرض الكلي ٢:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_amount_2"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ السداد الشهري ٢:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_monthly_payment_2"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد الدفعات المتبقية ٢:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_remaining_payments_2"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مرفق ٢:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="loan_attachment_2" name="loan_attachment_2"
+                                                               title="مرفق  ٢" accept="image/*,application/pdf"
+                                                               type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                            loan 3-->
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الغرض من القرض ٣:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="loan_purpose_3"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ القرض الكلي ٣:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_amount_3"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ السداد الشهري ٣:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_monthly_payment_3"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد الدفعات المتبقية ٣:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_remaining_payments_3"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مرفق ٣:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="loan_attachment_3" name="loan_attachment_3"
+                                                               title="مرفق  ٣" accept="image/*,application/pdf"
+                                                               type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!--                                        loan 4-->
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الغرض من القرض ٤:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="loan_purpose_4"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ القرض الكلي ٤:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_amount_4"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مبلغ السداد الشهري ٤:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_monthly_payment_4"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            عدد الدفعات المتبقية ٤:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="loan_remaining_payments_4"
+                                                               class="form-control s_website_form_input"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-2 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            مرفق ٤:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="loan_attachment_4" name="loan_attachment_4"
+                                                               title="مرفق  ٤" accept="image/*,application/pdf"
+                                                               type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div style="display:none;" id="number5"
+                                         class="s_website_form_rows row s_col_no_bgcolor">
+                                        <h3 class="o_default_snippet_text">الحالة الصحية</h3>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الحالة الصحية :
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="health_status" id="health_status" required="1"
+                                                                class="form-control">
+                                                            <option value="emergency">طارئة</option>
+                                                            <option value="normal">عادية</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            هل يوجد تأمين:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <select name="insurance_exists" id="insurance_exists"
+                                                                required="1" class="form-control">
+                                                            <option value="yes">يوجد</option>
+                                                            <option value="no">لا يوجد</option>
+                                                        </select>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-10 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            وثيقة التامين الطبي:
+                                                        </span>
+                                                        <!--                                                        <span class="s_website_form_mark o_default_snippet_text">-->
+                                                        <!--                                                            *-->
+                                                        <!--                                                        </span>-->
+
+                                                    </label>
+
+                                                    <div class="col-sm">
+                                                        <input id="insurance_doc" name="insurance_doc"
+                                                               title="وثيقة التامين الطبي"
+                                                               accept="image/*,application/pdf" type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            نسبة تغطية التأمين:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="insurance_coverage"
+                                                               class="form-control s_website_form_input"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الأجراء المطلوب:
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <!--                                                            <select name="required_action" id="required_action" required="1" class="form-control">-->
+                                                        <!--                                                                <option value="operation">عملية</option>-->
+                                                        <!--                                                                <option value="medication">أدوية</option>-->
+                                                        <!--                                                                <option value="other">جهاز</option>-->
+                                                        <!--                                                            </select>-->
+
+                                                        <select class="form-control" name="required_action"
+                                                                id="required_action" required="1">
+                                                            <option value=""/>
+                                                            <t t-foreach="request.env['procedure'].sudo().with_context(lang='ar_001').search([])"
+                                                               t-as="pro">
+                                                                <option t-att-value="pro.id">
+                                                                    <t t-esc="pro.name"/>
+                                                                </option>
+                                                            </t>
+                                                        </select>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            وصف الحالة الطبية:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="medical_condition_description"
+                                                               class="form-control s_website_form_input"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            أمراض اخرى:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="other_diseases"
+                                                               class="form-control s_website_form_input"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            كتلة الجسم:
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="Integer" name="body_mass_index"
+                                                               class="form-control s_website_form_input"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الأمراض المزمنة:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="chronic_diseases"
+                                                               class="form-control s_website_form_input"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            تقرير طبي حديث بصيغة
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="recent_medical_report" required="1"
+                                                               name="recent_medical_report" title="تقرير طبي حديث بصيغة"
+                                                               accept="image/*,application/pdf" type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-6 s_website_form_custom s_website_form_required">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            الهوية الوطنية
+                                                        </span>
+                                                        <span class="s_website_form_mark o_default_snippet_text">
+                                                            *
+                                                        </span>
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input id="national_id_image" required="1"
+                                                               name="national_id_image" title="الهوية الوطنية"
+                                                               accept="image/*,application/pdf" type="file"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div data-name="Field"
+                                                 class="s_website_form_field mb-3 col-10 s_website_form_custom ">
+                                                <div class="row s_col_no_resize s_col_no_bgcolor">
+                                                    <label class="col-form-label col-sm-auto s_website_form_label"
+                                                           style="width: 200px">
+                                                        <span class="s_website_form_label_content o_default_snippet_text">
+                                                            ملاحظة:
+                                                        </span>
+
+                                                    </label>
+                                                    <div class="col-sm">
+                                                        <input type="text" name="notes"
+                                                               class="form-control s_website_form_input"/>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div id="formErrorMessage" style="display:none" class="alert alert-warning">
+                                        <span t-vallue="error"/>
+                                    </div>
+
+
+                                    <!--                                    return buttons -->
+                                    <a href="#" id="number1_button_return" style="width: 120px;display:none"
+                                       role="button" class="btn btn-primary ">
+                                        السابق
+                                    </a>
+                                    <a href="#" id="number2_button_return" style="width: 120px;display:none"
+                                       role="button" class="btn btn-primary ">
+                                        السابق
+                                    </a>
+                                    <a href="#" id="number3_button_return" style="width: 120px;display:none"
+                                       role="button" class="btn btn-primary ">
+                                        السابق
+                                    </a>
+
+                                    <a href="#" id="number5_button_return" style="width: 120px;display:none"
+                                       role="button" class="btn btn-primary ">
+                                        السابق
+                                    </a>
+
+
+                                    <!--                                                                         3333333333333333333333333333 buttons 333333333333333333333333333333-->
+                                    <a href="#" id="number2_button" style="width: 120px;" role="button"
+                                       class="btn btn-primary ">
+                                        التالي
+                                    </a>
+                                    <a href="#" id="number3_button" style="width: 120px;display:none" role="button"
+                                       class="btn btn-primary ">
+                                        التالي
+                                    </a>
+                                    <a href="#" id="number4_button" style="width: 120px;display:none" role="button"
+                                       class="btn btn-primary ">
+                                        التالي
+                                    </a>
+                                    <a href="#" id="number5_button" style="width: 120px;display:none" role="button"
+                                       class="btn btn-primary ">
+                                        التالي
+                                    </a>
+                                    <div id="number6_button" style="display:none" class="mb-0 py-2 col-12 form-group">
+                                        <div style="width: 200px;" class="s_website_form_label"/>
+
+                                        <a href="#" id="number4_button_return" style="width: 120px;display:none"
+                                           role="button" class="btn btn-primary ">
+                                            السابق
+                                        </a>
+                                        <button type="submit" id="submit_button" class="btn btn-primary">ارسال</button>
+
+
+                                        <span id="s_website_form_result"/>
+                                    </div>
+
+
+                                </div>
+                            </form>
+                        </div>
+                    </section>
+
+
+                    <a class="o_scroll_button mb-3 rounded-circle align-items-center justify-content-center mx-auto bg-primary o_not_editable"
+                       href="#" title="Scroll down to next section">
+                        <i class="fa fa-angle-down fa-3x"/>
+                    </a>
+                </section>
+            </div>
+            <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                var residencyType = document.getElementById('residency_type');
+                var nationalId = document.getElementById('national_id');
+
+                function updatePlaceholder() {
+                var placeholderMap = {
+                'citizen': 'رقم السجل المدني',
+                'resident': 'رقم الإقامة',
+                'visitor': 'رقم التصريح',
+                'other': 'رقم جواز السفر'
+                };
+                nationalId.placeholder = placeholderMap[residencyType.value] || '';
+                }
+
+                residencyType.addEventListener('change', updatePlaceholder);
+                updatePlaceholder(); // Initialize placeholder on page load
+                });
+            </script>
+        </t>
+    </template>
+
+
+</odoo>

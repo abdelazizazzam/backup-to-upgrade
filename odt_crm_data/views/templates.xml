@@ -1,0 +1,192 @@
+<odoo>
+    <record id="view_crm_custom_data"
+            model="ir.ui.view">
+        <field name="name">crm.custom.data.form</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='tag_ids']"
+                   position="after">
+                <field name="coverage" widget="radio"/>
+                <field name="donor" invisible="coverage != 'donors'"/>
+                <field name="type_inv_pro_name"/>
+                <field name="inv_pro_name"/>
+            </xpath>
+            <xpath expr="//div[hasclass('oe_title')]/h1" position="after">
+                <h1>
+                    <field class="text-break" options="{'line_breaks': False}" widget="text" name="full_name"
+                           placeholder="Full Name"/>
+                </h1>
+                <h2>
+                    <field name="opportunity_no"/>
+                </h2>
+
+            </xpath>
+            <field name="name" position="attributes">
+                <attribute name="readonly">1</attribute>
+                <attribute name="force_save">1</attribute>
+            </field>
+            <xpath expr="//page[@name='internal_notes']"
+                   position="before">
+                <page string="البيانات الأولية">
+                    <group>
+                        <field name="name" readonly="0" force_save="1"/>
+                        <field name="civil_registry"/>
+                        <field name="nationality"/>
+                        <field name="birth_date"/>
+                        <field name="age" readonly="0"/>
+                        <field name="personal_email"/>
+                        <field name="personal_mobile"/>
+                        <field name="gender"/>
+                        <field name="profession"/>
+                        <field name="job_title"/>
+                        <field name="education_level"/>
+                    </group>
+                    <group string="بيانات الطوارئ">
+                        <field name="emergency_contact_name"/>
+                        <field name="emergency_contact_mobile"/>
+                        <field name="emergency_contact_relation"/>
+                    </group>
+                </page>
+                <page string="بيانات الحالة الاجتماعية">
+                    <group>
+                        <field name="marital_status"/>
+<!--                        <field name="family_members"/>-->
+<!--                        <field name="working_members"/>-->
+<!--                        <field name="students"/>-->
+                        <field name="primary_provider"/>
+                        <field name="provider_name"/>
+                        <field name="provider_relation"/>
+                    </group>
+                </page>
+                <page string="الوضع السكني">
+                    <group>
+                        <field name="residence_area"/>
+                        <field name="residence_city"/>
+                        <field name="residence_district"/>
+                        <field name="residence_type"/>
+                        <field name="residence_ownership"/>
+                        <field name="annual_rent"/>
+                        <field name="annual_rent_doc" filename="annual_rent_doc_name"/>
+                        <field name="annual_rent_doc_name" invisible="1"/>
+                    </group>
+                </page>
+                <page string="الوضع الاقتصادي">
+                    <group>
+                        <field name="income_source"/>
+                        <field name="monthly_income"/>
+                        <field name="income_doc" filename="income_doc_name"/>
+                        <field name="income_doc_name" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="loan_purpose_1"/>
+                        <field name="loan_amount_1"/>
+                        <field name="loan_monthly_payment_1"/>
+                        <field name="loan_remaining_payments_1"/>
+                        <field name="loan_attachment_1" filename="loan_attachment_1_name"/>
+                        <field name="loan_attachment_1_name" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="loan_purpose_2"/>
+                        <field name="loan_amount_2"/>
+                        <field name="loan_monthly_payment_2"/>
+                        <field name="loan_remaining_payments_2"/>
+                        <field name="loan_attachment_2" filename="loan_attachment_2_name"/>
+                        <field name="loan_attachment_2_name" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="loan_purpose_3"/>
+                        <field name="loan_amount_3"/>
+                        <field name="loan_monthly_payment_3"/>
+                        <field name="loan_remaining_payments_3"/>
+                        <field name="loan_attachment_3" filename="loan_attachment_3_name"/>
+                        <field name="loan_attachment_3_name" invisible="1"/>
+                    </group>
+                    <group>
+                        <field name="loan_purpose_4"/>
+                        <field name="loan_amount_4"/>
+                        <field name="loan_monthly_payment_4"/>
+                        <field name="loan_remaining_payments_4"/>
+                        <field name="loan_attachment_4" filename="loan_attachment_4_name"/>
+                        <field name="loan_attachment_4_name" invisible="1"/>
+                    </group>
+                </page>
+                <page string="الحالة الصحية">
+                    <group>
+                        <field name="health_status"/>
+                        <field name="insurance_exists"/>
+                         <field name="insurance_doc" filename="insurance_doc_name"/>
+                        <field name="insurance_doc_name" invisible="1"/>
+                        <field name="insurance_coverage"/>
+                        <field name="required_action"/>
+                        <field name="medical_condition_description"/>
+                        <field name="other_diseases"/>
+                        <field name="body_mass_index"/>
+                        <field name="chronic_diseases"/>
+                        <field name="recent_medical_report" filename="recent_medical_report_name"/>
+                        <field name="recent_medical_report_name" invisible="1"/>
+                        <field name="national_id_image" filename="national_id_image_name"/>
+                        <field name="national_id_image_name" invisible="1"/>
+                        <field name="notes"/>
+                    </group>
+                </page>
+
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="quick_create_opportunity_form_inherit" model="ir.ui.view">
+        <field name="name">quick_create_opportunity_form_inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.quick_create_opportunity_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="full_name"/>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="inherit_view_crm_case_leads_filter" model="ir.ui.view">
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='partner_id']" position="after">
+                <field
+                        name="opportunity_no"
+                        string="Opportunity No"
+
+                />
+                <field
+                        name="civil_registry"
+
+                />
+            </xpath>
+
+        </field>
+    </record>
+
+
+    <!--    <record id="view_custom_personal_information_search_inherit" model="ir.ui.view">-->
+    <!--        <field name="name">custom.personal.information.search.inherit</field>-->
+    <!--        <field name="model">crm.lead</field>-->
+    <!--        <field name="inherit_id" ref="crm.view_crm_case_opportunities_filter"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <xpath expr="//search" position="inside">-->
+    <!--                &lt;!&ndash; Search options &ndash;&gt;-->
+    <!--                <field name="national_id" string="ID"/>-->
+    <!--                <field name="full_name" string="Requester Name"/>-->
+    <!--                <field name="donor" string="Donor"/>-->
+
+    <!--                &lt;!&ndash; Group By option &ndash;&gt;-->
+    <!--                <group expand="0" string="Group By">-->
+    <!--                    <filter name="group_by_coverage" string="Coverage" context="{'group_by': 'coverage'}"/>-->
+    <!--                </group>-->
+    <!--            </xpath>-->
+    <!--        </field>-->
+    <!--    </record>-->
+
+
+</odoo>

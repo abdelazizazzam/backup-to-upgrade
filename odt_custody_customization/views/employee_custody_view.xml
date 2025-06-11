@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_custody_form" model="ir.ui.view">
+            <field name="name">hr.custody.form</field>
+            <field name="model">hr.custody</field>
+            <field name="inherit_id" ref="odt_custody.hr_asset_expense_custody_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='state']" position="after">
+                    <button invisible="state != 'draft'" name="submit" string="Submit" type="object"/>
+                    <button invisible="state != 'manager_approve'" name="manager_approve" string="Manager Approval" type="object"/>
+                    <button invisible="state != 'section_approve'" name="section_approve" string="Second Approval" type="object"/>
+                </xpath>
+                <xpath expr="//field[@name='employee_id']" position="after">
+                    <field name="custody_category"/>
+                </xpath>
+                <xpath expr="//field[@name='custody_line']/tree/field[@name='date_from']" position="before">
+                    <field invisible="1" name="section"/>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>

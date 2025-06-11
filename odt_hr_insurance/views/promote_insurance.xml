@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    insurance promotion form  -->
+    <record id="view_insurance_promote_form" model="ir.ui.view">
+        <field name="name">view.insurance.promote.form</field>
+        <field name="model">insurance.promote</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Promotion">
+                <header>
+                    <button class="oe_highlight" invisible="state not in ['draft']" name="action_request" string="Request" type="object"/>
+                    <button class="oe_highlight" invisible="state not in ['open']" name="action_confirm" string="Confirm" type="object"/>
+                    <button invisible="state not in ['draft','open']" name="action_cancel" string="Cancel" type="object"/>
+                    <button invisible="state not in ['cancel']" name="set_draft" string="Set To Draft" type="object"/>
+                    <field name="state" options="{'fold_field': 'fold'}" statusbar_visible="draft,open,sent,done" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="code"/>
+                        </h1>
+                    </div>
+                    <group col="4">
+                        <field name="sending_date"/>
+                        <field name="promotion_date"/>
+                        <field name="emp_id"/>
+                        <field name="current_categ"/>
+                        <field name="new_categ"/>
+                    </group>
+                </sheet>
+            </form></field>
+    </record>
+    <!--    insurance promotion tree -->
+    <record id="view_insurance_promote_tree" model="ir.ui.view">
+        <field name="name">view.insurance.promote.tree</field>
+        <field name="model">insurance.promote</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Promotion">
+                <field name="code"/>
+                <field name="sending_date"/>
+                <field name="promotion_date"/>
+                <field name="emp_id"/>
+                <field name="current_categ"/>
+                <field name="new_categ"/>
+                <field name="state"/>
+            </tree></field>
+    </record>
+    <!--    insurance promotion action -->
+    <record id="action_insurance_promote_view" model="ir.actions.act_window">
+        <field name="name">Insurance Promote</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.promote</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+                Make new Promotion !
+            </p></field>
+    </record>
+    <!--    insurance promotion menu-->
+    <menuitem action="action_insurance_promote_view" id="menu_insurance_promote" name="Insurance Promotion" parent="odt_hr_insurance.menu_insurance_categ_menu_root" sequence="2"/>
+</odoo>

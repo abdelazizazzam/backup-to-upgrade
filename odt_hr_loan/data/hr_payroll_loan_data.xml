@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Salary Other Input -->
+    <record id="loan_other_input" model="hr.payslip.input.type">
+        <field name="name">LOAN</field>
+        <field name="code">LOAN</field>
+    </record>
+
+    <!--Notifiaction Template-->
+    <record id="mail_act_hr_loan" model="mail.activity.type">
+            <field name="name">HR Loan</field>
+            <field name="icon">fa-sun-o</field>
+            <field name="res_model">hr.loan</field>
+    </record>
+</odoo>

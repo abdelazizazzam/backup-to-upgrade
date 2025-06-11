@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Work entry type on hr leave -->
+    <record id="hr_base_leave_form_inherit" model="ir.ui.view">
+        <field name="name">hr.base.leave.form.inherit</field>
+        <field name="model">hr.leave.type</field>
+        <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='request_unit']" position="after">
+                <group>
+                    <field name="leave_type"/>
+                </group>
+                <group invisible="leave_type != 'sick'" required="leave_type == 'sick'">
+                    <field name="percentage30"/>
+                    <field name="percentage90"/>
+                    <field name="percentage120"/>
+                </group>
+                <group invisible="leave_type != 'normal'" required="leave_type == 'normal'">
+                    <field name="min_days"/>
+                    <field name="max_days"/>
+                    <field name="max_years"/>
+                    <field name="request_per_year"/>
+                    <field name="posting_balance"/>
+                    <field name="years_posting"/>
+                    <field name="extend"/>
+                    <field invisible="extend == False" name="max_extend" required="extend == True"/>
+                </group>
+            </xpath></field>
+    </record>
+    <!--    <record id="hr_leave_view_form_inherit_extend" model="ir.ui.view">-->
+    <!--        <field name="name">hr.leave.view.form.base.inherit</field>-->
+    <!--        <field name="model">hr.leave</field>-->
+    <!--        <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>-->
+    <!--        <field name="arch" type="xml">-->
+    <!--            <field name="holiday_status_id" position="after">-->
+    <!--                <field name="leave_type_extend" invisible="1"/>-->
+    <!--                <group attrs="{'invisible': [('leave_type_extend', '=', False)]}">-->
+    <!--&lt;!&ndash;                    <label for="extend"/>&ndash;&gt;-->
+    <!--                <field name="extend" />-->
+    <!--                <field name="parent_id" nolabel="1" domain="[('employee_id', '=', employee_id),('holiday_status_id', '=', holiday_status_id),('state', '=','validate' )]"  options="{'no_create': True, 'no_open': True}" attrs="{'invisible': [('extend', '=', False)],'required': [('extend', '=', True)]}"/>-->
+    <!--                </group>-->
+    <!--</field>-->
+    <!--</field>-->
+    <!--    </record>-->
+</odoo>

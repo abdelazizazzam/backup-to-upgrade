@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+        <record id="view_grade_form_insurance" model="ir.ui.view">
+            <field name="name">view.grade.form.insurance</field>
+            <field name="model">hr.grade</field>
+            <field name="inherit_id" ref="odt_hr_base.view_grade_form" />
+            <field name="arch" type="xml">
+                <field name="transport" position="after">
+                    <field name="medical_insurance_id"/>
+                </field>
+            </field>
+        </record>
+</odoo>
