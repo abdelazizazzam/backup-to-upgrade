@@ -1,0 +1,390 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="purchase_order_report" model="ir.actions.report">
+            <field name="name">نموذج الإحالة</field>
+            <field name="model">purchase.order</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odt_crm_purchase.report_purchase_order_template</field>
+            <field name="report_file">odt_crm_purchase.report_purchase_order_template</field>
+<!--            <field name="binding_model_id" ref="purchase.model_purchase_order"/>-->
+            <field name="binding_model_id" eval="False"/>
+            <field name="binding_type">report</field>
+        </record>
+        <template id="report_purchase_order_template">
+            <t t-call="web.html_container">
+                <t t-call="web.basic_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="header" style="font-size:15px; direction: ltr;">
+                            <div class="row">
+
+                                <div class="col-2" dir="rtl">
+                                    <span>الرقم :</span>
+                                    <span t-esc="o.crm_lead_id.opportunity_no"/>
+                                    <br/>
+                                    <span>التاريخ :</span>
+                                    <span t-esc="o.date_order.strftime('%Y-%m-%d')"/>
+                                    <br/>
+                                    <span/>
+                                    <span>رقم الطلب :</span>
+                                    <span t-esc="o.name"/>
+                                </div>
+                                <div class="col-3" dir="rtl"></div>
+                                <div class="col-3">
+                                    <img t-if="o.company_id.logo" t-att-src="image_data_uri(o.company_id.logo)"
+                                         height="65" width="105" style="margin-right:10px;"
+                                         alt="Logo"/>
+
+                                </div>
+                                <div class="col-4" dir="rtl" style="margin-right:2px;">
+                                    <span>الجمعيه الخيريه لعلاج المرضى(علاجى)</span>
+                                    <br/>
+                                    <span>وزارة الموارد البشريةوالتنمية الاجتماعية</span>
+                                    <br/>
+                                    <center>679</center>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page" style="font-size:14px; direction: ltr;">
+                            <center>
+                                <div style="background-color: #F8FAFC; padding: 8px; border-radius: 2px;">
+                                    <h5 style="margin: 0;">(PR-1) نموذج إحالة مريض</h5>
+                                    <div style="border-top: 1px solid #000; width: 21%; margin: 0;"></div>
+                                </div>
+                            </center>
+                            <t t-if="o.state == 'purchase'">
+                                <div class="row">
+                                    <div class="col-4" dir="rtl">
+                                        <t t-if="o.crm_lead_id.coverage == 'association'">
+                                            <img src="/odt_crm_purchase/static/src/img/true.png"
+                                                 style="vertical-align: top;"
+                                                 width="20" height="20" border="0"/>
+                                            <span style="display: inline-block;">تبرع من</span>
+                                            <span style="display: inline-block;">(
+                                                <!--                                                <span t-esc="o.coverage"/>-->
+                                                <span t-esc="dict(o.fields_get(allfields=['coverage'])['coverage']['selection'])[o.coverage]"/>
+
+                                                )
+                                            </span>
+
+                                        </t>
+                                        <t t-else="">
+                                            <img src="/odt_crm_purchase/static/src/img/true.png"
+                                                 style="vertical-align: top;"
+                                                 width="20" height="20" border="0"/>
+                                            <span style="display: inline-block;">تبرع من</span>
+                                            <span style="display: inline-block;">(
+                                                <span t-esc="o.donor_name"/>
+                                                )
+                                            </span>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+
+                            <div class="row">
+                                <div class="col-4" dir="rtl">
+                                    <!--                                    <p style="display: inline-block; height: 15px; width: 15px; background-color: #E0E0E0; margin: 0 5px;"></p>-->
+                                    <t t-if="o.type_inv_pro_name == 'individual' ">
+                                        <img src="/odt_crm_purchase/static/src/img/true.png"
+                                             style="vertical-align: top;"
+                                             width="20" height="20" border="0"/>
+
+                                        <span style="display: inline-block;">فردى</span>
+                                        <span style="display: inline-block;">(<span t-esc="o.inv_pro_name"/>)
+                                        </span>
+                                    </t>
+                                    <t t-else="o.type_inv_pro_name == 'project' ">
+                                        <img src="/odt_crm_purchase/static/src/img/true.png"
+                                             style="vertical-align: top;"
+                                             width="20" height="20" border="0"/>
+
+
+                                        <span style="display: inline-block;">مشروع</span>
+                                        <span style="display: inline-block;">(<span t-esc="o.inv_pro_name"/>)
+                                        </span>
+                                    </t>
+
+                                </div>
+                            </div>
+                            <br/>
+                            <center>
+                                <div style="background-color: #F8FAFC; padding: 8px; border-radius: 2px;">
+                                    <h5 style="margin: 0;">PATIENT INFORMATION</h5>
+                                </div>
+                            </center>
+
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Patient Name :</span>
+                                </div>
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.full_name"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>اسم المريض :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Ref.To :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.partner_id.name"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>الجهة المحال لها :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>ID Number :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.civil_registry_iqama"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>رقم الهوية :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Mobile Number :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.phone_number"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>رقم الجوال :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Relative Number :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.contact_phone_number"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>رقم احد الاقارب :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Gender :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.gender"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>الجنس :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Age :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.age"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>العمر :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Address :</span>
+                                </div>
+
+                                <div t-if="o.residence_area" class="col-4 text-center">
+                                    <span t-esc="dict(o.fields_get(allfields=['residence_area'])['residence_area']['selection'])[o.residence_area]"/>
+                                    -
+                                    <span t-esc="o.residence_city"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>مكان الاقامة :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Ref.to department :</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.transfer_depart"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>التحويل لقسم :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-4" dir="ltr">
+                                    <span>Type of procedure:</span>
+                                </div>
+
+                                <div class="col-4 text-center">
+                                    <span t-esc="o.required_action"/>
+                                </div>
+                                <div class="col-4" dir="rtl">
+                                    <span>نوع الاجراء :</span>
+                                </div>
+                            </div>
+                            <div style="border-top: 1px solid #E0E0E0; width: 100%; margin: 0;"></div>
+
+                            <br/>
+                            <div class="row">
+                                <div class="col-9"/>
+
+                                <div class="col-3">
+
+                                    <t t-if="o.state == 'purchase'">
+                                        <span dir="rtl"># آمل قبول الحالة وفق التكاليف المعتمدة</span>
+                                    </t>
+                                    <t t-else="">
+                                        <span dir="rtl"># آمل قبول الحالة وإفادتنا بالتكاليف</span>
+                                    </t>
+                                    <br/>
+                                    <span dir="rtl">مدير القسم / خدمات المستفدين</span>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+
+                            <center>
+                                <div>
+                                    <h5>اعتماد التكلفة</h5>
+                                </div>
+                            </center>
+                            <br/>
+                            <br/>
+                            <div class="row">
+                                <div class="col-8"/>
+
+                                <div class="col-4">
+
+                                    <span dir="rtl"># بناء على التقرير الطبى الوارد من قبلكم بتاريخ</span>
+                                </div>
+                            </div>
+                            <table class="table table-bordered">
+                                <!--                                <tr>-->
+                                <!--                                    <th rowspan="1"></th>-->
+
+                                <!--                                    <th colspan="6"></th>-->
+                                <!--                                    <th rowspan="2" colspan="6">يعتمد الاجراء التالى</th>-->
+                                <!--                                </tr>-->
+                                <tr>
+                                    <!--                                    <th style="white-space: text-nowrap;">التوقيع</th>-->
+                                    <!--                                    <th style="white-space: text-nowrap;">التوقيع</th>-->
+                                    <!--                                    <th style="white-space: text-nowrap;">تاريخ الاعتماد</th>-->
+                                    <th style="white-space: text-nowrap;">الاجمالى</th>
+                                    <th style="white-space: text-nowrap;">بدون ضرائب</th>
+                                    <th style="white-space: text-nowrap;">المبلغ المعتمد</th>
+                                    <th style="white-space: text-nowrap;">الكمية</th>
+                                    <th colspan="6">يعتمد الاجراء التالى</th>
+
+                                </tr>
+                                <t t-foreach="o.order_line" t-as="line">
+                                    <tr>
+                                        <!--                                        <td/>-->
+                                        <!--                                        <td/>-->
+                                        <!--                                        <td/>-->
+                                        <td style="text-align:center">
+                                            <span t-field="line.price_total"/>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <span t-field="line.price_subtotal"/>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <span t-field="line.price_unit"/>
+                                        </td>
+                                        <td style="text-align:center">
+                                            <span t-field="line.product_qty"/>
+                                        </td>
+                                        <td colspan="6" style="text-align:center">
+                                            <span t-field="line.product_id.name"/>
+                                        </td>
+
+                                    </tr>
+                                </t>
+                            </table>
+                            <br></br>
+                            <div class="row text-center">
+                                <t t-if="o.state_account_date">
+                                    <div class="col-4">
+                                        <img src="/odt_crm_purchase/static/src/img/accountant.jpeg"
+                                             style="width: 70px; height: 70px;"
+                                        />
+                                        <br/>
+                                        <span>Accountant</span>
+                                        <br/>
+                                        <span t-esc="o.state_account_date"/>
+                                    </div>
+                                </t>
+                                <t t-if="o.state_finance_manager_date">
+                                    <div class="col-4">
+                                        <img src="/odt_crm_purchase/static/src/img/finance_manager.jpeg"
+                                             style="width: 70px; height: 70px;"
+                                        />
+                                        <br/>
+                                        <span>Finance Manager</span>
+                                        <br/>
+                                        <span t-esc="o.state_finance_manager_date"/>
+                                    </div>
+                                </t>
+                                <t t-if="o.state_ceo_date">
+                                    <div class="col-4">
+                                        <img src="/odt_crm_purchase/static/src/img/ceo.jpeg"
+                                             style="width: 70px; height: 70px;"
+                                        />
+                                        <br/>
+                                        <span>CEO</span>
+                                        <br/>
+                                        <span t-esc="o.state_ceo_date"/>
+                                    </div>
+                                </t>
+                            </div>
+
+
+                        </div>
+                        <div class="footer"/>
+
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

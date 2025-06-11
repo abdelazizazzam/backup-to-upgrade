@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+        <record id="link_users_view" model="ir.ui.view">
+            <field name="name">link.user</field>
+            <field name="model">link.user</field>
+            <field name="arch" type="xml">
+                <form string="Zk create users">
+                    <group>
+						<field name="employee_ids">
+                            <tree>
+                                <field name="name"/>
+                                <field name="zknumber"/>
+                            </tree>
+                        </field>
+					</group>
+                    <group>
+						<field name="from_date"/>
+					</group>
+					<footer>
+						<button name="create_users_zk" string="Synchronize" type="object" default_focus="1" class="oe_highlight"/>
+						or 
+						<button string="Cancel" class="btn-secondary" special="cancel" />
+				</footer>         
+                </form>
+            </field>
+        </record>
+        
+        <record id="action_link_user" model="ir.actions.act_window">
+            <field name="name">Link Users </field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">link.user</field>
+            <field name="view_mode">form</field>
+            <field name="target">new</field>
+            <field name="binding_view_types">list</field>
+        </record>
+
+</odoo>

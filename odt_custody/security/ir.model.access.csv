@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_custody_user,hr.custody,model_hr_custody,,1,1,1,1
+access_custody_line_user,hr.custody.line,model_hr_custody_line,,1,1,1,1
+access_hr_clearance_user,access_hr_clearance.user,model_hr_clearance,hr.group_hr_user,1,1,1,1
+access_department_asset,access_department_asset,model_department_asset,,1,1,1,1

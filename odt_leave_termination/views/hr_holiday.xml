@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<!--        <record id="hr_leave_view_form_manager" model="ir.ui.view">-->
+<!--            <field name="name">hr.leave.form.inherit2</field>-->
+<!--            <field name="model">hr.leave</field>-->
+<!--            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='name']" position="after">-->
+<!--                    <field name="reconcile_option"/>-->
+<!--                    <field name="is_reconciled" />-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+<!--        <record id="hr_leave_view_form_dashboard" model="ir.ui.view">-->
+<!--            <field name="name">hr.leave.form.dashboard</field>-->
+<!--            <field name="model">hr.leave</field>-->
+<!--            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_dashboard"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='name']" position="after">-->
+
+<!--                    <field name="reconcile_option"/>-->
+<!--                    <field name="is_reconciled"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+
+
+<!--        <record id="hr_leave_view_form_manager_approve" model="ir.ui.view">-->
+<!--            <field name="name">hr.leave.form.manager.approve</field>-->
+<!--            <field name="model">hr.leave</field>-->
+<!--            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form_manager_approve"/>-->
+<!--            <field name="arch" type="xml">-->
+<!--                <xpath expr="//field[@name='name']" position="after">-->
+<!--                    <field name="reconcile_option"/>-->
+<!--                    <field name="is_reconciled"/>-->
+<!--                </xpath>-->
+<!--            </field>-->
+<!--        </record>-->
+    <record id="hr_leave_view_form_return" model="ir.ui.view">
+            <field name="name">hr.leave.form.inherit</field>
+            <field name="model">hr.leave</field>
+            <field name="inherit_id" ref="hr_holidays.hr_leave_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//sheet" position="inside">
+                    <group>
+                        <field name="reconcile_option" />
+<!--                        <field name="is_settlement"/>-->
+                        <field name="is_reconciled" force_save="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+</odoo>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="hr_contract_view_form_inherit_analytic" model="ir.ui.view">
+        <field name="name">hr.contract.view.form.inherit.analytic</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='top_info_left']/field[@name='date_end']" position="after">
+                <field name="trial_start"/>
+                <field name="trial_end"/>
+            </xpath>
+            <xpath expr="//field[@name='hr_responsible_id']" position="after">
+                <field invisible="1" name="employee_country"/>
+                <!-- <field name="housing_rule" invisible="1"/> -->
+            </xpath>
+            <xpath expr="//notebook/page[@name='information']/group/group[@name='salary']" position="inside">
+                <!--                <field name="has_car" />-->
+                <field invisible="False" name="transportation_rule" options="{'horizontal': true}" widget="radio"/>
+                <field name="transportation_value"/>
+                <field name="trans_value" string="بدل نقل"/>
+                <field name="housing_monthly_allowance"/>
+                <!--                    attrs="{'invisible': [('housing_rule', '!=', 'monthly')]}"/>-->
+                <field name="allowance" string="بدل تحصيل (خدمات المشتركين)"/>
+                <field name="allowance2"/>
+                <field name="allowance3" string="بدل مقابلة جمهور (خدمات المشتركين)"/>
+                <field name="allowance4" string="بدل تصديق (خدمات المشتركين)"/>
+                <field name="allowance5"/>
+                <field name="allowance6"/>
+                <field name="total_salary"/>
+            </xpath>
+            <xpath expr="//notebook" position="inside">
+                <page invisible="employee_country == 'SA'" string="Tickets">
+                    <group>
+                        <field name="tickets_amount"/>
+                        <!--                        <field name="remaining_tickets" />-->
+                    </group>
+                </page>
+                <page string="Housing">
+                    <group>
+                        <field name="housing_rule"/>
+                    </group>
+                    <group>
+                        <field invisible="housing_rule == 'monthly'" name="allowance_line_ids" widget="section_and_note_one2many">
+                            <tree editable="bottom">
+                                <field name="date"/>
+                                <field name="amount"/>
+                                <field name="status"/>
+                            </tree></field>
+                    </group>
+                    <button class="oe_highlight pull-right" invisible="housing_rule == 'monthly'" name="act" string="Compute Housing Allowance" type="object"/>
+                </page>
+            </xpath></field>
+    </record>
+    <record id="hr_contract_form_inherit" model="ir.ui.view">
+        <field name="name">hr_contract_form_inherit</field>
+        <field name="model">hr.contract</field>
+        <field name="inherit_id" ref="odt_contract_termination_link.hr_contract_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='duration_group']/label[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='duration_group']/div[1]" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='top_info_right']/field[@name='contract_type_id']" position="attributes">
+                <attribute name="required">1</attribute>
+            </xpath>
+            <xpath expr="//group[@name='duration_group']/div[1]" position="after">
+                <field name="contract_duration"/>
+            </xpath>
+            <xpath expr="////group[@name='duration_group']/field[@name='working_hours']" position="after">
+                <field name="vacation_days"/>
+            </xpath>
+            <xpath expr="//group[@name='duration_group']/field[@name='date_end']" position="attributes">
+                <attribute name="required">contract_duration == 'limited'</attribute>
+            </xpath></field>
+    </record>
+</odoo>

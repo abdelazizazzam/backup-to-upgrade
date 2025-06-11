@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="hr_asset_product_custody_report"
+                model="hr.custody.line"
+                report_type="qweb-pdf"
+                string="Custody Report"
+                name="odt_custody_custom.hr_asset_product_custody_report_view"
+                file="odt_custody_custom.hr_asset_product_custody_report_view"
+        />
+
+        <template id="hr_asset_product_custody_report_view">
+            <t t-call="web.html_container">
+                <!--<t t-call="report.internal_layout">-->
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <t t-foreach="docs" t-as="item">
+                            <h2 align="center">Custody Report</h2>
+                            <br/>
+                            <br/>
+                            <table class="table table-condensed" align="center">
+                                <tbody>
+                                    <tr height="35px">
+                                        <th class="text-center">Name</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">Employee</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.employee_id.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr height="35px">
+                                        <th class="text-center">Date From</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.date_from"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">Date To</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.date_to"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr height="35px">
+                                        <th class="text-center">Custody Type</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.type_custody"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th t-if="item.type_custody == 'asset'" class="text-center">Asset</th>
+                                        <td t-if="item.type_custody == 'asset'" class="text-center">
+                                            <span t-esc="item.asset_id.name"/>
+                                        </td>
+                                        <th t-if="item.type_custody == 'expense'" class="text-center">Expense</th>
+                                        <td t-if="item.type_custody == 'expense'" class="text-center">
+                                            <span t-esc="item.product_id.name"/>
+                                        </td>
+
+                                        <th t-if="item.type_custody == 'other'" class="text-center">Other</th>
+                                        <td t-if="item.type_custody == 'other'" class="text-center">
+                                            <span t-esc="item.name"/>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <th t-if="item.type_custody == 'asset'" class="text-center">Reference</th>
+                                        <td t-if="item.type_custody == 'asset'" class="text-center">
+                                            <span t-esc="item.asset_id.model"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th t-if="item.type_custody == 'asset'" class="text-center">Code</th>
+                                        <td t-if="item.type_custody == 'asset'" class="text-center">
+                                            <span t-esc="item.asset_id.model"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th t-if="item.type_custody == 'asset'" class="text-center">Description</th>
+                                        <td t-if="item.type_custody == 'asset'" class="text-center">
+                                            <span t-esc="item.asset_id.notes"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <th class="text-center">Notes</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.notes"/>
+                                        </td>
+
+                                    </tr>
+                                    <tr height="35px">
+                                        <th class="text-center">Status</th>
+                                        <td class="text-center">
+                                            <span t-esc="item.state_custody"/>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <h4>Signature</h4>
+                        </t>
+                    </div>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

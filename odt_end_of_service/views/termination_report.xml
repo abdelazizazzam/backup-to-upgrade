@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <report
+                id="termination_report"
+                model="hr.termination"
+                report_type="qweb-pdf"
+                string="Termination"
+                name="odt_end_of_service.report_termination_template"
+                file="odt_end_of_service.report_termination_template"
+        />
+        <template id="report_termination_template">
+            <t t-call="web.external_layout">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="web.html_container">
+                        <div class="page">
+                            <p align="center" style="font-size: large;text-decoration: underline;">
+                                <strong>Termination</strong>
+                            </p>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Termination Number:</strong>
+                                    <span t-field="o.termination_code"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Application Date:</strong>
+                                    <span t-field="o.date"/>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div>
+                                <div style="width:50%; float:left;">
+                                    <strong size="4"></strong>
+                                    <!--<span t-field="o.termination_code"/>-->
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4"></strong>
+                                    <!--<span t-field="o.date"/>-->
+                                </div>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Employee:</strong>
+                                    <span t-field="o.employee_id.name"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Job Title:</strong>
+                                    <span t-field="o.job_id.name"/>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Employee code:</strong>
+                                    <span t-field="o.employee_id.employee_id"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Contract:</strong>
+                                    <span t-field="o.contract_id.name"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <div style="width:100%" t-if="o.calc_type=='contract'">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Hire Date:</strong>
+                                    <span t-field="o.hire_date"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Job Ending Date:</strong>
+                                    <span t-field="o.job_ending_date"/>
+                                </div>
+                            </div>
+                            <div class="row" t-if="o.calc_type!='contract'">
+                                <div class="col-xs-4">
+                                    <strong size="4">Year:</strong>
+                                    <span t-field="o.years_val"/>Years
+                                </div>
+                                <div class="col-xs-4">
+                                    <strong size="4">Month:</strong>
+                                    <span t-field="o.months_val"/>Months
+                                </div>
+                                 <div class="col-xs-4">
+                                    <strong size="4">Day:</strong>
+                                    <span t-field="o.days_val"/>Days
+                                </div>
+                            </div>
+
+                            <p></p>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Payment Method:</strong>
+                                    <span t-field="o.payment_method.name"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Journal:</strong>
+                                    <span t-field="o.journal_id.name"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:100%;">
+                                    <strong size="4">EOS Reason :</strong>
+                                    <span t-field="o.eos_reason"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Approved By:</strong>
+                                    <span t-field="o.approved_by.name"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Approval Date:</strong>
+                                    <span t-field="o.approval_date"/>
+                                </div>
+                            </div>
+                            <p></p>
+                            <p></p>
+                            <br/>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">End Of Service Amount:</strong>
+                                   <span t-esc="'{:,}'.format(round(o.total_deserve))"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Leaves Amount:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.deserve_salary_amount))"/>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Addition Value:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.add_value))"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Deduction Value:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.ded_value))"/>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <div style="width:50%;float:left;">
+                                    <strong size="4">Absence Value:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.absence_amount_val))"/>
+                                </div>
+                                <div style="width:50%;float:right;">
+                                    <strong size="4">Unpaid Value:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.unpaid_amount_val))"/>
+                                </div>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <div style="width:50%;float:left;">
+                                    <strong size="4">Loan Value:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.loan_value))"/>
+                                </div>
+                                <div style="width:50%;float:right;">
+                                    <strong size="4">Total Deserved:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.total_deserve_amount))"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">State:</strong>
+                                    <span t-field="o.state"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Is Clearance:</strong>
+                                    <span t-field="o.is_clearance"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <div>
+                                <p style="font-size: large;">
+                                    <font size="10">
+                                        <strong>End Of Service:</strong>
+                                    </font>
+                                </p>
+                            </div>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Total Salary:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.basic_salary))"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Min Months:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.min_months))"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Working Period:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.working_period))"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Period in Years:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.period_in_years))"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <p></p>
+                            <p></p>
+                            <p></p>
+                            <div>
+                                <p style="font-size: large;">
+                                    <font size="10">
+                                        <strong>Vacation:</strong>
+                                    </font>
+                                </p>
+                            </div>
+                            <div style="width:100%">
+                                <div style="width:50%; float:left;">
+                                    <strong size="4">Vacation Days:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.vacation_days))"/>
+                                </div>
+                                <div style="width:50%; float:right;">
+                                    <strong size="4">Salary Amount:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.salary_amount))"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:100%;">
+                                    <strong size="4">Leaves Amount:</strong>
+                                    <span t-esc="'{:,}'.format(round(o.deserve_salary_amount))"/>
+                                </div>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="width:100%">
+                                <div style="width:75%; float:left;">
+                                    <strong style="font-size: large;">Notes:</strong>
+                                    <span t-field="o.notes"/>
+                                </div>
+                                <div style="width:25%; float:right;">
+                                    <strong style="font-size: large;">Signature:</strong>
+                                </div>
+                            </div>
+
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="crm_case_form_view_oppor_add_attr" model="ir.ui.view">
+        <field name="name">crm.case.form.view.oppor.add.attr</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="sale_crm.crm_case_form_view_oppor"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_sale_quotations_new']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="crm_case_form_view_oppor" model="ir.ui.view">
+        <field name="name">crm.lead.oppor.inherited.crm</field>
+        <field name="model">crm.lead</field>
+        <field name="priority">20</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='user_id']" position="attributes">
+                <attribute name="string">Responsible</attribute>
+            </xpath>
+
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                <button string="New RFQ" name="action_create_rfq" type="object" class="oe_highlight"
+                        title="Create new RFQ"
+                />
+            </xpath>
+            <xpath expr="//sheet/div[hasclass('oe_button_box')]" position="inside">
+                <button class="oe_stat_button"
+                        name="action_view_purchase_orders"
+                        type="object"
+                        groups="purchase.group_purchase_user"
+                        icon="fa-pencil-square-o"
+                        invisible="purchase_order_count == 0">
+                    <field string="Purchases" name="purchase_order_count" widget="statinfo"/>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="hr_termination_report" model="ir.actions.report">
+            <field name="name">مستحقات اجازة</field>
+            <field name="model">hr.holiday.termination</field>
+            <field name="report_type">qweb-pdf</field>
+            <field name="report_name">odt_leave_termination.report_hr_termination_template</field>
+            <field name="report_file">odt_leave_termination.report_hr_termination_template</field>
+        </record>
+        <template id="termination_internal_header">
+            <div class="header">
+                <div class="row">
+                    <div class="col-12">
+                        <img src="/odt_iya_reports/static/src/img/header.png"
+                             name="Picture 2" align="bottom" width="900" height="150" border="0"/>
+                    </div>
+                </div>
+            </div>
+            <div class="footer">
+                <div class="col-12">
+                    <img src="/odt_iya_reports/static/src/img/footer.png"
+                         name="Picture 3" align="bottom" width="900" height="100" border="0"/>
+                </div>
+            </div>
+            <div class="article" t-att-data-oe-model="o and o._name" t-att-data-oe-id="o and o.id"
+                 t-att-data-oe-lang="o and o.env.context.get('lang')">
+                <t t-raw="0"/>
+            </div>
+        </template>
+        <template id="report_hr_termination_template">
+            <t t-call="web.html_container">
+                <t t-foreach="docs" t-as="o">
+                    <t t-call="odt_leave_termination.termination_internal_header">
+                        <div class="page">
+                            <center>
+                                <h1 class="p3 ft0">مستحقات تسوية الإجازة</h1>
+                            </center>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 164px; text-align: right;">
+                                                <span t-field="o.employee_id.name"/>
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <strong>:الموظف</strong>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-field="o.termination_code"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>:رقم الاجراء</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 164px; text-align: right;">
+                                                <span t-field="o.job_id.name"/>
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <strong>:الوظيفة</strong>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-field="o.employee_id.employee_id"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>: الرقم الوظيفي</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 164px; text-align: right;">
+                                                <!--<span t-field="o.hire_date"/>-->
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <!--<strong>: تاريخ الإلتحاق</strong>-->
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-field="o.contract_id.name"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>: العقد</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width: 164px; text-align: right;">
+                                                <span t-field="o.settlements_days"/>
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <strong>: عدد أيام التسوية</strong>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-field="o.reconcile_date"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>: تاريخ التسوية</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br/>
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <!--<t t-if="o.leave_amount > 0">-->
+                                            <td style="width: 164px; text-align: right;">
+                                                <!--<span t-field="o.total_deserve_amount"/>-->
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <!--<strong>:ممستحقات نهاية الخدمة</strong>-->
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-esc="'%.2f'% (o.leave_amount)"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>:مستحقات الاجازة</strong>
+                                            </td>
+                                            <!--</t>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <!--<t t-if="o.ticket_amount > 0">-->
+
+                                            <td style="width: 164px; text-align: right;">
+                                                <!--<span t-field="o.add_value"/>-->
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <!--<strong>: قيمة الإضافة</strong>-->
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-esc="'%.2f'% (o.ticket_amount)"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>: بدل تذكرة</strong>
+                                            </td>
+                                            <!--</t>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <p></p>
+                            <div style="width:100%">
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+                                            <!--<t t-if="o.total_amount > 0">-->
+                                            <td style="width: 164px; text-align: right;">
+                                                <!--<span t-field="o.loan_value"/>-->
+                                            </td>
+                                            <td style="width: 165px; text-align: right;">
+                                                <!--<strong>: قيمة القرض</strong>-->
+                                            </td>
+                                            <td style="width: 166px; text-align: right;"></td>
+                                            <td style="width: 166px;"></td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-esc="'%.2f'% (o.total_amount)"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>: الاجمالي المستحق</strong>
+                                            </td>
+                                            <!--</t>-->
+                                        </tr>
+                                    </tbody>
+                                </table>
+
+                            </div>
+
+                            <br/>
+                            <div>
+                                <table style="height: 47px;" width="1033">
+                                    <tbody>
+                                        <tr>
+
+                                            <td style="width: 166px; text-align: right;">
+                                                <span t-field="o.notes"/>
+                                            </td>
+                                            <td style="width: 166px; text-align: right;">
+                                                <strong>: الملاحظات</strong>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <div style="width:100%;text-align: center;">
+                                <strong>
+                                    <p>ادارة شؤون الموظفين &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;<span t-field="o.employee_id.name"/>&amp;nbsp; &amp;nbsp; &amp;nbsp;
+                                    &amp;nbsp; &amp;nbsp;
+                                </p>
+                                <!--<p>&amp;nbsp; &amp;nbsp;&amp;nbsp;&amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;-->
+                                    <!--&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp;-->
+                                    <!--&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;&amp;nbsp; &amp;nbsp;-->
+                                    <!--&amp;nbsp;&amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp; &amp;nbsp;-->
+                                <!--</p>-->
+                                </strong>
+                            </div>
+
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+    </data>
+</odoo>

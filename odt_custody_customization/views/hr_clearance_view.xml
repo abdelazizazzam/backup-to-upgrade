@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_clearance_form_view" model="ir.ui.view">
+            <field name="name">hr.clearance.custom.form</field>
+            <field name="model">hr.clearance</field>
+            <field name="inherit_id" ref="odt_custody.hr_clearance_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/sheet/group[2]" position="attributes">
+                    <attribute name="string">
+                        Section 1</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section1_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[2]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section1_manager" invisible="is_custody1 == True" name="action_section1" string="Confirm" type="object"/>
+                    </div>
+                    <field invisible="1" name="is_custody1"/>
+                    <field invisible="1" name="is_custody2"/>
+                    <field invisible="1" name="is_custody3"/>
+                    <field invisible="1" name="is_custody4"/>
+                    <field invisible="1" name="is_custody5"/>
+                    <field invisible="1" name="is_custody6"/>
+                    <field invisible="1" name="is_custody7"/>
+                    <field invisible="1" name="is_custody8"/>
+                </xpath>
+                <xpath expr="//form/sheet/group[3]" position="attributes">
+                    <attribute name="string">
+                        Section 2</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section2_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[3]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section2_manager" invisible="is_custody2 == True" name="action_section2" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/group[4]" position="attributes">
+                    <attribute name="string">
+                        Section 3</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section3_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[4]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section3_manager" invisible="is_custody3 == True" name="action_section3" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/group[5]" position="attributes">
+                    <attribute name="string">
+                        Section 4</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section4_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[5]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section4_manager" invisible="is_custody4 == True" name="action_section4" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/group[6]" position="attributes">
+                    <attribute name="string">
+                        Section 5</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section5_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[6]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section5_manager" invisible="is_custody5 == True" name="action_section5" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/group[7]" position="attributes">
+                    <attribute name="string">
+                        Section 6</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section6_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[7]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section6_manager" invisible="is_custody6 == True" name="action_section6" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/group[8]" position="attributes">
+                    <attribute name="string">
+                        Section 7</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section7_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[8]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section7_manager" invisible="is_custody7 == True" name="action_section7" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//form/sheet/group[9]" position="attributes">
+                    <attribute name="string">
+                        Section 8</attribute>
+                    <attribute name="groups">
+                        odt_custody_customization.group_section8_manager</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[9]" position="before">
+                    <div class="pull-right">
+                        <button class="oe_highlight" groups="odt_custody_customization.group_section8_manager" invisible="is_custody8 == True" name="action_section8" string="Confirm" type="object"/>
+                    </div>
+                </xpath>
+                <xpath expr="//field[@name='custody_ids']" position="attributes">
+                    <attribute name="readonly">is_custody8 == True</attribute>
+                </xpath>
+                <xpath expr="//form/sheet/group[2]/field[@name='depart_asset']" position="replace">
+                    <field name="custody_line_ids1" nolabel="1" readonly="state in 'done'">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//form/sheet/group[3]/field[@name='support_service_asset']" position="replace">
+                    <field name="custody_line_ids2" nolabel="1" readonly="state in 'done'">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//form/sheet/group[4]/field[@name='gov_public_asset']" position="replace">
+                    <field name="custody_line_ids3" nolabel="1" readonly="state in 'done'">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//form/sheet/group[5]/field[@name='opmarket_asset']" position="replace">
+                    <field name="custody_line_ids4" nolabel="1" readonly="state in 'done'">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//form/sheet/group[6]/field[@name='it_asset']" position="replace">
+                    <field name="custody_line_ids5" nolabel="1" readonly="state in 'done'">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//form/sheet/group[7]/field[@name='finance_asset']" position="replace">
+                    <field name="custody_line_ids6" nolabel="1" readonly="state in 'done'">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//form/sheet/group[8]/field[@name='hr_asset']" position="replace">
+                    <field name="custody_line_ids7" nolabel="1" readonly="state in 'done' and is_custody7 == True">
+                        <tree editable="bottom">
+                            <field name="type_custody"/>
+                            <field name="asset_id"/>
+                            <field name="product_id"/>
+                            <field name="state_custody"/>
+                        </tree></field>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids1']" position="attributes">
+                    <attribute name="readonly">is_custody1 == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids2']" position="attributes">
+                    <attribute name="readonly">is_custody2 == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids3']" position="attributes">
+                    <attribute name="readonly">is_custody3 == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids4']" position="attributes">
+                    <attribute name="readonly">is_custody4 == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids5']" position="attributes">
+                    <attribute name="readonly">is_custody5 == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids6']" position="attributes">
+                    <attribute name="readonly">is_custody6 == True</attribute>
+                </xpath>
+                <xpath expr="//field[@name='custody_line_ids7']" position="attributes">
+                    <attribute name="readonly">is_custody7 == True</attribute>
+                </xpath>
+                <xpath expr="//button[@name='approve_state']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath></field>
+        </record>
+    </data>
+</odoo>
