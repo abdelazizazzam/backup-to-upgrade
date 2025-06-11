@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="payslip"
+            model="ir.module.category">
+            <field name="name">Payslip</field>
+            <field name="sequence"
+                eval="6"/>
+        </record>
+
+        <record id="can_confirm_payslip_group"
+            model="res.groups">
+            <field name="name">Can Confirm Payslip</field>
+            <field name="category_id"
+                ref="payslip"/>
+        </record>
+        <record id="settlement_first_approve_group"
+            model="res.groups">
+            <field name="name">Can Approve Settlement 1</field>
+            <field name="category_id"
+                ref="payslip"/>
+        </record>
+        <record id="settlement_second_approve_group"
+            model="res.groups">
+            <field name="name">Can Approve Settlement 2</field>
+            <field name="category_id"
+                ref="payslip"/>
+        </record>
+    </data>
+</odoo>

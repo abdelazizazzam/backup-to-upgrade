@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="hr_custody_category" model="ir.module.category">
+            <field name="name">Custody Section</field>
+        </record>
+
+        <record id="group_section1_manager" model="res.groups">
+            <field name="name">Section 1 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+
+        <record id="group_section2_manager" model="res.groups">
+            <field name="name">Section 2 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+        <record id="group_section3_manager" model="res.groups">
+            <field name="name">Section 3 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+
+        <record id="group_section4_manager" model="res.groups">
+            <field name="name">Section 4 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+        <record id="group_section5_manager" model="res.groups">
+            <field name="name">Section 5 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+        <record id="group_section6_manager" model="res.groups">
+            <field name="name">Section 6 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+
+        <record id="group_section7_manager" model="res.groups">
+            <field name="name">Section 7 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+        <record id="group_section8_manager" model="res.groups">
+            <field name="name">Section 8 manager</field>
+            <field name="category_id" ref="hr_custody_category"/>
+        </record>
+    </data>
+</odoo>

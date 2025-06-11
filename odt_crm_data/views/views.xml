@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="website_partner_menu" model="website.menu">
+        <field name="name">Booking</field>
+        <field name="url">/webform</field>
+        <field name="parent_id" ref="website.main_menu"/>
+        <field name="sequence" type="int">90</field>
+    </record>
+
+    <record id="view_country_form_inherit_top_nationality" model="ir.ui.view">
+        <field name="name">res.country.form.inherit.top_nationality</field>
+        <field name="model">res.country</field>
+        <field name="inherit_id" ref="base.view_country_form"/>
+        <field name="arch" type="xml">
+            <field name="state_required" position="after">
+                <field name="is_priority"/>
+            </field>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="seq_employee_id_company1" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="1"/>
+        </record>
+        <record id="seq_employee_id_company2" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="2"/>
+        </record>
+        <record id="seq_employee_id_company3" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="3"/>
+        </record>
+        <record id="seq_employee_id_company4" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="4"/>
+        </record>
+        <record id="seq_employee_id_company5" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="5"/>
+        </record>
+        <record id="seq_employee_id_company6" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="6"/>
+        </record>
+        <record id="seq_employee_idcompany7" model="ir.sequence">
+            <field name="name">Employee Id</field>
+            <field name="code">hr.employee.id</field>
+            <field name="prefix">COM/</field>
+            <field name="padding">4</field>
+            <field name="company_id" eval="7"/>
+        </record>
+    </data>
+    
+
+</odoo>

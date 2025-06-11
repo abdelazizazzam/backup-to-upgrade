@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Inherit Employee Form View to Modify it -->
+    <record id="view_inherit_employee_dependent_form" model="ir.ui.view">
+        <field name="name">view.inherit.employee.dependent.form</field>
+        <field name="model">hr.employee</field>
+        <field name="inherit_id" ref="hr.view_employee_form"/>
+        <field name="arch" type="xml">
+            <notebook position="inside">
+                <page string="Dependents">
+                    <field name="dependent_ids" nolabel="1">
+                        <tree>
+                            <field name="arabic_name" />
+                            <field name="english_name" />
+                            <field name="id_number" />
+                            <field name="relative_relation" />
+                            <field name="date_of_birth" />
+                            <field name="gender" />
+                            <field name="addition_date" />
+                            <field name="phone_number" />
+                        </tree>
+                    </field>
+                </page>
+            </notebook>
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,21 @@
+<odoo>
+
+<!--    &lt;!&ndash; Inherit Employee Form View to Modify it &ndash;&gt;-->
+<!--    <record id="view_inherit_employee_policy_form" model="ir.ui.view">-->
+<!--        <field name="name">view.inherit.employee.policy.form</field>-->
+<!--        <field name="model">hr.employee</field>-->
+<!--        <field name="inherit_id" ref="hr.view_employee_form"/>-->
+<!--        <field name="arch" type="xml">-->
+<!--            <notebook position="inside">-->
+<!--                <page string="Insurance Policy">-->
+<!--                    <group>-->
+<!--                    </group>-->
+<!--                    <group col="10">-->
+<!--                        <field name="policy_status"/>-->
+<!--                        <field name="policy_id"/>-->
+<!--                    </group>-->
+<!--                </page>-->
+<!--            </notebook>-->
+<!--        </field>-->
+<!--    </record>-->
+</odoo>

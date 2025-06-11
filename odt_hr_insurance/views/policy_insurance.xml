@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--    insurance policy form-->
+    <record id="view_insurance_policy_form" model="ir.ui.view">
+        <field name="name">view.insurance.policy.form</field>
+        <field name="model">insurance.policy</field>
+        <field name="arch" type="xml">
+            <form string="Insurance Policy">
+                <header>
+                    <button class="btn-primary" invisible="state not in ['draft']" name="action_confirm" string="Confirm" type="object"/>
+                    <button class="btn-secondary" invisible="state not in ['active']" name="action_cancel" string="Cancel" type="object"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="policy_number"/>
+                        <field name="policy_start_date"/>
+                        <field name="policy_end_date"/>
+                        <field name="insurance_pricing_ids"/>
+                    </group>
+                </sheet>
+            </form></field>
+    </record>
+    <!--    insurance policy tree -->
+    <record id="view_insurance_policy_tree" model="ir.ui.view">
+        <field name="name">view.insurance.policy.tree</field>
+        <field name="model">insurance.policy</field>
+        <field name="arch" type="xml">
+            <tree string="Insurance Policy">
+                <field name="policy_number"/>
+                <field name="policy_start_date"/>
+                <field name="policy_end_date"/>
+            </tree></field>
+    </record>
+    <!--    insurance policy action -->
+    <record id="action_insurance_policy_view" model="ir.actions.act_window">
+        <field name="name">Insurance Policy</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.policy</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first insurance Policy
+            </p></field>
+    </record>
+    <!--    insurance policy menu-->
+    <menuitem action="action_insurance_policy_view" id="menu_insurance_policy_view" name="Insurance Policy" parent="odt_hr_insurance.menu_insurance_categ_menu_root" sequence="1"/>
+</odoo>

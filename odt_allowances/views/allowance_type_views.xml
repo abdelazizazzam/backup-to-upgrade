@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="allowance_type_tree" model="ir.ui.view">
+        <field name="name">allowance.type.tree</field>
+        <field name="model">allowance.type</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="other_input_type_id"/>
+                <field name="amount"/>
+                <field name="description"/>
+                <field name="need_to_add_quantity"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="allowance_type_form" model="ir.ui.view">
+        <field name="name">allowance.type.form</field>
+        <field name="model">allowance.type</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="other_input_type_id"/>
+                            <field name="amount"/>
+                            <field name="description"/>
+                                            <field name="need_to_add_quantity"/>
+
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="allowance_type_action" model="ir.actions.act_window">
+        <field name="name">Allowance Type</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">allowance.type</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+    <menuitem id="allowance_type_menu"
+              name="Allowance Type"
+              parent="hr_holidays.menu_hr_holidays_configuration"
+              action="allowance_type_action"
+              sequence="100"/>
+</odoo>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="ir.rule" id="loan_multi_company_rule">
+            <field name="name">Loan multi company</field>
+            <field name="model_id" ref="model_hr_loan"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+        <record model="ir.rule" id="loan_payment_multi_company_rule">
+            <field name="name">Payment Line multi company</field>
+            <field name="model_id" ref="model_loan_payments"/>
+            <field name="global" eval="True"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]
+            </field>
+        </record>
+
+        <record id="loan_groups" model="ir.module.category">
+            <field name="name">Loan Approves</field>
+            <field name="sequence" eval="7"/>
+        </record>
+
+        <record id="approve1_group" model="res.groups">
+            <field name="name">First Loan Approve</field>
+            <field name="category_id" ref="loan_groups"/>
+        </record>
+
+        <record id="approve_group" model="res.groups">
+            <field name="name">Second Loan Approve</field>
+            <field name="category_id" ref="loan_groups"/>
+        </record>
+
+        <record id="approve2_group" model="res.groups">
+            <field name="name">Final Loan Approve</field>
+            <field name="category_id" ref="loan_groups"/>
+        </record>
+
+        <!--Account Auditor-->
+        <record id="account.group_account_readonly" model="res.groups">
+            <field name="implied_ids" eval="[(4,ref('odt_hr_loan.approve2_group'))]"/>
+        </record>
+
+        <record id="cancel_group" model="res.groups">
+            <field name="name">Cancel</field>
+            <field name="category_id" ref="loan_groups"/>
+        </record>
+    </data>
+</odoo>

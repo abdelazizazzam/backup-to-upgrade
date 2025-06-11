@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_wizard_form" model="ir.ui.view">
+        <field name="name">report insurance</field>
+        <field name="model">insurance.wizard</field>
+        <field name="arch" type="xml">
+            <form string="wizard_insurance_form">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="all_company" widget="boolean_toggle"/>
+                            <field invisible="all_company == True" name="employee"/>
+                        </group>
+                        <group>
+                            <field name="insurance_policy" readonly="all_company == False" required="all_company == True"/>
+                        </group>
+                    </group>
+                    <footer>
+                        <button class="oe_highlight" name="do_print" string="طباعة" type="object"/>
+                        <button class="btn btn-secondary" special="cancel" string="الغاء"/>
+                    </footer>
+                </sheet>
+            </form></field>
+    </record>
+    <record id="wizard_insurance_action" model="ir.actions.act_window">
+        <field name="name">تقارير</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">insurance.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+    <menuitem action="wizard_insurance_action" id="menu_insurance_report" name="تقارير" parent="odt_hr_insurance.menu_insurance_categ_menu_root" sequence="100"/>
+</odoo>

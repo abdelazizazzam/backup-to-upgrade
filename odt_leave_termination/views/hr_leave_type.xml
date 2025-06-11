@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <data>
+
+        <record model="ir.ui.view" id="edit_holiday_status_form_adding_field">
+            <field name="name">hr.leave.type.form</field>
+            <field name="model">hr.leave.type</field>
+            <field name="inherit_id" ref="hr_holidays.edit_holiday_status_form" />
+            <field name="arch" type="xml">
+                <xpath expr="//form//sheet//group//field[@name='time_type']" position="after">
+                    <group name="Is Annual" position="after">
+                        <field name="is_annual"/>
+                    </group>
+                </xpath>
+                
+            </field>
+        </record>
+    
+    </data>
+
+</odoo>

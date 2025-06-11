@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="quarterly" model="hr.payslip.input.type">
+        <field name="name">Quarterly Allowance</field>
+        <field name="code">quarterly</field>
+    </record>
+    <record id="semi_anually" model="hr.payslip.input.type">
+        <field name="name">Semi anually Housing Allowance</field>
+        <field name="code">semi_anually</field>
+    </record>
+    <record id="anually" model="hr.payslip.input.type">
+        <field name="name">Anual housing allowance</field>
+        <field name="code">anually</field>
+    </record>
+    <record id="allowance_1" model="hr.payslip.input.type">
+        <field name="name">allowance</field>
+        <field name="code">allowance</field>
+    </record>
+    <record id="allowance_2" model="hr.payslip.input.type">
+        <field name="name">allowance2</field>
+        <field name="code">allowance2</field>
+    </record>
+    <record id="allowance_3" model="hr.payslip.input.type">
+        <field name="name">allowance3</field>
+        <field name="code">allowance3</field>
+    </record>
+    <record id="allowance_4" model="hr.payslip.input.type">
+        <field name="name">allowance4</field>
+        <field name="code">allowance4</field>
+    </record>
+    <record id="allowance_5" model="hr.payslip.input.type">
+        <field name="name">allowance5</field>
+        <field name="code">allowance5</field>
+    </record>
+
+    <record id="allowance_6" model="hr.payslip.input.type">
+        <field name="name">allowance6</field>
+        <field name="code">allowance6</field>
+    </record>
+    <record id="transportation" model="hr.payslip.input.type">
+        <field name="name">transportation allowance</field>
+        <field name="code">transportation</field>
+    </record>
+</odoo>

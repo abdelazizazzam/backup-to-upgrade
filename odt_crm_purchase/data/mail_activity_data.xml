@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="mail_activity_crm_lead_notify" model="mail.activity.type">
+        <field name="name">Opportunity</field>
+        <field name="icon">fa-sun-o</field>
+        <field name="res_model">crm.lead</field>
+    </record>
+    <record id="mail_activity_rfq_notify" model="mail.activity.type">
+        <field name="name">RFQ</field>
+        <field name="icon">fa-sun-o</field>
+        <field name="res_model">purchase.order</field>
+    </record>
+    <record id="mail_activity_am_notify" model="mail.activity.type">
+        <field name="name">Bill</field>
+        <field name="icon">fa-sun-o</field>
+        <field name="res_model">account.move</field>
+    </record>
+</odoo>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="res_config_settings_view_form_biotime" model="ir.ui.view">
+            <field name="name">res.config.settings.view.form.inherit.hr.attendance.biotime</field>
+            <field name="model">res.config.settings</field>
+            <field name="inherit_id" ref="hr_attendance.res_config_settings_view_form"/>
+            <field name="arch" type="xml">
+                <!--            <xpath expr="//div[@data-key='hr_attendance']" position="inside">-->
+                <xpath expr="//form//app//block[@name='overtime_settings']" position="after">
+                    <block title="Biotime Integration" name="biotime_integration">
+<!--                        <h2>BIOTIME Integration</h2>-->
+                        <div class="col-12 col-lg-3 o_setting_box">
+                            <div class="o_setting_left_pane"/>
+                            <div class="o_setting_right_pane">
+                                <div class="text-muted">
+                                    Synchronize your Attendance with Biotime
+                                </div>
+                                <div class="content-group">
+                                    <label for="biotime_url" string="URL" class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="biotime_url" nolabel="1"/>
+                                    <br/>
+                                    <label for="biotime_user" string="Biotime User"
+                                           class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="biotime_user" nolabel="1"/>
+                                    <br/>
+                                    <label for="biotime_password" string="Biotime Password"
+                                           class="col-3 col-lg-3 o_light_label"/>
+                                    <field name="biotime_password" password="True" nolabel="1"/>
+                                </div>
+                            </div>
+                        </div>
+                    </block>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

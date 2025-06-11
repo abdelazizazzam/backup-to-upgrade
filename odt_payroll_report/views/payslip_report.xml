@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <record id="payslip_form_form" model="ir.ui.view">
+            <field name="name">payslip.form</field>
+            <field name="model">hr.payslip</field>
+            <field name="inherit_id" ref="hr_payroll.view_hr_payslip_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//button[@name='action_print_payslip']" position="after">
+                    <button string="Print Payslip Report" name="action_print_payslip_report" type="object"/>
+                </xpath>
+            </field>
+        </record>
+
+        <template id="odt_payroll_report.external_layout_report">
+            <t t-call="odt_payroll_report.external_layout_header"/>
+            <div class="article o_report_layout_standard" t-att-data-oe-model="o and o._name"
+                 t-att-data-oe-id="o and o.sudo().id"
+                 t-att-data-oe-lang="o and o.sudo().env.context.get('lang')">
+                <t t-set="colclass" t-value="('col-md-5' if report_type == 'html' else 'col-5') + ' ml-auto'"/>
+                <t t-if="address">
+                    <div class="address row">
+                        <t t-if="information_block">
+                            <t t-set="colclass" t-value="'col-5 offset-1'"/>
+                            <div name="information_block" class="col-6">
+                                <t t-raw="information_block"/>
+                            </div>
+                        </t>
+                        <div name="address" t-att-class="colclass">
+                            <t t-raw="address"/>
+                        </div>
+                    </div>
+                </t>
+                <t t-raw="0"/>
+            </div>
+            <t t-call="odt_payroll_report.external_layout_footer"/>
+        </template>
+        <template id="external_layout_header">
+            <div class="header">
+                <br/>
+                <div>
+                    <img t-if="o.sudo().company_id.logo" t-att-src="image_data_uri(o.sudo().company_id.logo)"
+                         style="max-height: 180px;"/>
+
+
+                </div>
+            </div>
+        </template>
+        <template id="external_layout_footer">
+            <div class="footer">
+                <div class="text-center" style="font-family:Calibri;height:100px; width:100%;">
+                    <html>
+                        <head>
+                            <style>
+                                table, th, td {
+                                border: 3px solid black;
+                                border-collapse: collapse;
+                                }
+                                th, td {
+                                padding: 0px;
+                                }
+                            </style>
+                        </head>
+                        <!-- <body>
+
+
+                        <table style="width:100%">
+                          <tr><th>
+                                    <center>
+                                        <p>شركة ميلان عود - س.ت.40302833878-جدة2214صندوق2355 </p>
+                                        <p style="line-height: 7px">OUD MILANOest.CR .4030283878 - JEDDAH 2214 P.O. BOX2355 E-MAIL:info@oudmilano.com</p>
+                                        <p style="line-height: 7px">www.oudmilano.com</p>
+                                        </center>
+                                        </th>
+                                        </tr>
+                        </table>
+                        </body> -->
+                    </html>
+                </div>
+            </div>
+        </template>
+
+
+        <template id="payslip_report_temp">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <t t-foreach="docs" t-as="o">
+                        <div class="page">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <center>
+                                <h1 style="color: #40752f;">AL AHSA CHAMBER- KSA Salary Slip Report</h1>
+                            </center>
+                            <html>
+                                <head>
+                                    <style>
+                                        table, th, td {
+                                        border: 1px solid black;
+                                        border-collapse: collapse;
+                                        }
+                                        th, td {
+                                        padding: 0px;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+
+
+                                    <table style="width:100%">
+                                        <tr>
+
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Employee Name</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Payroll Period</span>
+                                            </th>
+
+                                        </tr>
+                                        <tr>
+
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.name"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '01'">
+                                                        <span dir="rtl">January -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '02'">
+                                                        <span dir="rtl">February -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '03'">
+                                                        <span dir="rtl">March -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '04'">
+                                                        <span dir="rtl">April -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '05'">
+                                                        <span dir="rtl">May -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '06'">
+                                                        <span dir="rtl">June -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '07'">
+                                                        <span dir="rtl">July -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '08'">
+                                                        <span dir="rtl">August -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '09'">
+                                                        <span dir="rtl">September -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '10'">
+                                                        <span dir="rtl">October -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '11'">
+                                                        <span dir="rtl">November -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                    <t t-if="o.sudo().date_to.strftime('%m') == '12'">
+                                                        <span dir="rtl">December -
+                                                            <span t-esc="o.sudo().date_to.strftime('%Y')"/>
+                                                        </span>
+                                                    </t>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Identification Num</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Salary Structure</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.identification_id"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().struct_id.name"/>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <!--        <th style="background: #9bc2e6;text-align:center;" bgcolor="#9bc2e6"><span style="color: #ffffff;">Employee Num.</span></th>-->
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Payment Method</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <!--        <th style="background: #ddebf7;text-align:center;" bgcolor="#ddebf7"><span><span t-esc="o.employee_id.employee_id"/></span></th>-->
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>Cash/ Cheques/Bank transfer</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Joining Date</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Bank Name</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.joining_date"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.bank_account_id.bank_id.name"/>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Job Title</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Bank Iban</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.job_id.name"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.bank_account_id.acc_number"/>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Department</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Vacation Balance</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.department_id.name"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.allocation_count"/>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Contract Type</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Email</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().contract_id.contract_type_id.name"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.work_email"/>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Nationality</span>
+                                            </th>
+                                            <th style="background: #40752f;text-align:center;" bgcolor="#40752f">
+                                                <span style="color: #ffffff;">Location</span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.country_id.name"/>
+                                                </span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span>
+                                                    <span t-esc="o.sudo().employee_id.work_location_id.name"/>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+
+
+                                    </table>
+
+
+                                </body>
+                            </html>
+                            <br/>
+                            <html>
+                                <head>
+                                    <style>
+                                        table, th, td {
+                                        border: 1px solid black;
+                                        border-collapse: collapse;
+                                        }
+                                        th, td {
+                                        padding: 0px;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+
+
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th style="background: #dddddd;text-align:center;" width="120"
+                                                bgcolor="#dddddd">
+                                                <span>EARNINGS</span>
+                                            </th>
+                                            <th style="background: #dddddd;text-align:center;" width="120"
+                                                bgcolor="#dddddd">
+                                                <span>Amount</span>
+                                            </th>
+
+
+                                        </tr>
+
+                                        <tr t-foreach="o.sudo().line_ids" t-as="line">
+
+
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <t t-if="(line.category_id.code == 'ALW' or line.category_id.code == 'BASIC') and (line.total >= 1)">
+                                                    <span t-esc="line.total"/>
+                                                </t>
+                                            </td>
+
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <t t-if="(line.category_id.code == 'ALW' or line.category_id.code == 'BASIC') and (line.total >= 1)">
+                                                    <span t-esc="line.total"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+
+                                        <tr>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <span style="color: #ffffff;">Emplo</span>
+                                            </td>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #dddddd;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span>GROSS PAY</span>
+                                            </th>
+                                            <th style="background: #b2b2b2;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span>
+                                                    <t t-foreach="o.sudo().line_ids" t-as="line">
+                                                        <t t-if="line.code == 'GROSS'">
+                                                            <span t-esc="line.total"/>
+                                                        </t>
+                                                    </t>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <span style="color: #ffffff;">Emplo</span>
+                                            </td>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #dddddd;text-align:center;" width="120"
+                                                bgcolor="#dddddd">
+                                                <span>DEDUCTIONS</span>
+                                            </th>
+                                            <th style="background: #dddddd;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span></span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr t-foreach="o.sudo().line_ids" t-as="line">
+
+
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <t t-if="line.category_id.code == 'DED'">
+                                                    <span t-esc="line.name"/>
+                                                </t>
+                                            </td>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <t t-if="line.category_id.code == 'DED'">
+                                                    <span t-esc="line.total"/>
+                                                </t>
+                                            </td>
+
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #dddddd;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span>Earning Total</span>
+                                            </th>
+                                            <th style="background: #b2b2b2;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span>
+                                                    <t t-foreach="o.sudo().line_ids" t-as="line">
+                                                        <t t-if="line.code == 'SUMDED'">
+                                                            <span t-esc="line.total"/>
+                                                        </t>
+                                                    </t>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+                                        <tr>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                            </td>
+                                            <td style="text-align:rigth;" width="120" bgcolor="#dddddd">
+                                                <span style="color: #ffffff;">Emplo</span>
+                                            </td>
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #dddddd;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span>NET PAY</span>
+                                            </th>
+                                            <th style="background: #b2b2b2;text-align:center;" width="150"
+                                                bgcolor="#dddddd">
+                                                <span>
+                                                    <t t-foreach="o.sudo().line_ids" t-as="line">
+                                                        <t t-if="line.code == 'NET'">
+                                                            <span t-esc="line.total"/>
+                                                        </t>
+                                                    </t>
+                                                </span>
+                                            </th>
+
+
+                                        </tr>
+
+
+                                    </table>
+
+
+                                </body>
+                            </html>
+
+
+                            <br/>
+
+                            <html>
+                                <head>
+                                    <style>
+                                        table, th, td {
+                                        border: 1px solid black;
+                                        border-collapse: collapse;
+                                        }
+                                        th, td {
+                                        padding: 0px;
+                                        }
+                                    </style>
+                                </head>
+                                <body>
+
+
+                                    <table style="width:100%">
+                                        <tr>
+                                            <th style="color: #ffffff;background: #40752f;text-align:center;"
+                                                bgcolor="#40752f">
+                                                <span>Company Stamp</span>
+                                            </th>
+                                            <th style="color: #ffffff; background: #40752f;text-align:center;"
+                                                bgcolor="#40752f">
+                                                <span>HR Manager Signature</span>
+                                            </th>
+
+                                        </tr>
+                                        <tr>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span style="color: #94af8b;">Emplo</span>
+                                            </th>
+                                            <th style="background: #94af8b;text-align:center;" bgcolor="#94af8b">
+                                                <span style="color: #94af8b;"></span>
+                                            </th>
+                                        </tr>
+                                    </table>
+                                </body>
+                            </html>
+
+                        </div>
+                    </t>
+                </t>
+            </t>
+        </template>
+        <record id="paperformat_report_oud" model="report.paperformat">
+            <field name="name">OUD</field>
+            <field name="format">custom</field>
+            <field name="page_height">300</field>
+            <field name="page_width">230</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">30</field>
+            <field name="margin_bottom">30</field>
+            <field name="margin_left">10</field>
+            <field name="margin_right">10</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">30</field>
+            <field name="dpi">90</field>
+        </record>
+
+        <report
+                id="report_payroll_employee"
+                string="Payroll Report"
+                model="hr.payslip"
+                report_type="qweb-pdf"
+                name="odt_payroll_report.payslip_report_temp"
+                file="odt_payroll_report.payslip_report_temp"
+                attachment_use="False"
+                paperformat="odt_payroll_report.paperformat_report_oud"
+        />
+
+
+    </data>
+</odoo>
